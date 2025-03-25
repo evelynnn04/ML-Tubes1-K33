@@ -33,6 +33,27 @@ def sigmoid_derivative(x):
     s = sigmoid(x)
     return s * (1 - s)
 
+def softmax(x):
+    """Softmax activation function"""
+    # Subtract max for numerical stability
+    exp_x = np.exp(x - np.max(x, axis=1, keepdims=True))
+    return exp_x / np.sum(exp_x, axis=1, keepdims=True)
+
+def softmax_derivative(x):
+    """Derivative of softmax function"""
+    # Compute softmax values
+    s = softmax(x)
+    
+    # Create diagonal matrices and subtract
+    jacobian_matrix = np.zeros((x.shape[0], x.shape[1], x.shape[1]))
+    for i in range(x.shape[0]):
+        # Create diagonal of softmax output
+        diag = np.diag(s[i])
+        # Subtract outer product
+        jacobian_matrix[i] = diag - np.outer(s[i], s[i])
+    
+    return jacobian_matrix
+
 def apply_activation(x, activation_name):
     """Apply activation function to input"""
     if activation_name == 'linear':
@@ -43,6 +64,8 @@ def apply_activation(x, activation_name):
         return tanh(x)
     elif activation_name == 'sigmoid':
         return sigmoid(x)
+    elif activation_name == 'softmax':
+        return softmax(x)
     else:
         raise ValueError(f"Activation function {activation_name} not supported.")
 
@@ -56,5 +79,7 @@ def apply_activation_derivative(x, activation_name):
         return tanh_derivative(x)
     elif activation_name == 'sigmoid':
         return sigmoid_derivative(x)
+    elif activation_name == 'softmax':
+        return softmax_derivative(x)
     else:
         raise ValueError(f"Activation function {activation_name} not supported.")
