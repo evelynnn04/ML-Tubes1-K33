@@ -8,10 +8,13 @@ from loss_functions import get_loss_function, get_loss_derivative
 import visualization as vis
 
 class FFNN:
-    def __init__(self, layer_sizes, activation_functions, loss_function, weight_init_method='uniform', 
-                 lower_bound=-0.1, upper_bound=0.1, seed=42):
+    def __init__(self, layer_sizes, activation_functions, loss_function, 
+                 weight_init_method='uniform', 
+                 lower_bound=-0.1, upper_bound=0.1,  # For uniform
+                 mean=0.0, variance=0.1,  # For normal
+                 seed=42):
         """
-        Initialize a Feedforward Neural Network.
+        Initialize a Feedforward Neural Network with enhanced weight initialization.
         
         Parameters:
         -----------
@@ -20,13 +23,18 @@ class FFNN:
         activation_functions : list
             Activation function for each layer (including input layer)
         loss_function : str
-            Loss function to use ('binary_cross_entropy')
+            Loss function to use
         weight_init_method : str
-            Method to initialize weights ('uniform')
+            Method to initialize weights 
+            Options: 'uniform', 'normal', 'zero'
         lower_bound : float
-            Lower bound for weight initialization (if using uniform)
+            Lower bound for uniform weight initialization
         upper_bound : float
-            Upper bound for weight initialization (if using uniform)
+            Upper bound for uniform weight initialization
+        mean : float
+            Mean for normal distribution weight initialization
+        variance : float
+            Variance for normal distribution weight initialization
         seed : int
             Random seed for reproducibility
         """
@@ -45,6 +53,8 @@ class FFNN:
         self.weight_init_method = weight_init_method
         self.lower_bound = lower_bound
         self.upper_bound = upper_bound
+        self.mean = mean
+        self.variance = variance
         self.seed = seed
         
         # Initialize weights and biases
@@ -56,9 +66,20 @@ class FFNN:
         
         # Initialize weights between layers
         for i in range(len(layer_sizes) - 1):
+            # Weight initialization based on method
             if weight_init_method == 'uniform':
                 w = np.random.uniform(lower_bound, upper_bound, (layer_sizes[i], layer_sizes[i+1]))
                 b = np.random.uniform(lower_bound, upper_bound, (1, layer_sizes[i+1]))
+            elif weight_init_method == 'normal':
+                # Use normal distribution with specified mean and variance
+                w = np.random.normal(loc=mean, scale=np.sqrt(variance), 
+                                     size=(layer_sizes[i], layer_sizes[i+1]))
+                b = np.random.normal(loc=mean, scale=np.sqrt(variance), 
+                                     size=(1, layer_sizes[i+1]))
+            elif weight_init_method == 'zero':
+                # Initialize weights and biases to zero
+                w = np.zeros((layer_sizes[i], layer_sizes[i+1]))
+                b = np.zeros((1, layer_sizes[i+1]))
             else:
                 raise ValueError(f"Initialization method {weight_init_method} not supported.")
             

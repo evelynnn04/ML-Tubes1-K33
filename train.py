@@ -50,6 +50,22 @@ def test_binary_classification():
         upper_bound=0.1,
         seed=42
     )
+
+    # model_zero = FFNN(
+    #     layer_sizes=[784, 128, 10],
+    #     activation_functions=['relu', 'sigmoid'],
+    #     loss_function='binary_cross_entropy',
+    #     weight_init_method='zero'
+    # )
+
+    # model_normal = FFNN(
+    #     layer_sizes=[784, 128, 10],
+    #     activation_functions=['relu', 'sigmoid'],
+    #     loss_function='binary_cross_entropy',
+    #     weight_init_method='normal',
+    #     mean=0.0,  # default mean
+    #     variance=0.1  # default variance
+    # )
     
     # Train the model
     print("Training the model...")
@@ -123,14 +139,20 @@ def test_multiclass_classification():
     output_size = 10  # Multi-class classification: 10 classes (digits 0-9)
     
     # Create model
+    # model = FFNN(
+    #     layer_sizes=[input_size, hidden_size, output_size],
+    #     activation_functions=['linear', 'relu', 'sigmoid'],  # Note: input layer uses linear activation
+    #     loss_function='binary_cross_entropy',
+    #     weight_init_method='uniform',
+    #     lower_bound=-0.1,
+    #     upper_bound=0.1,
+    #     seed=42
+    # )
     model = FFNN(
-        layer_sizes=[input_size, hidden_size, output_size],
-        activation_functions=['linear', 'relu', 'sigmoid'],  # Note: input layer uses linear activation
+        layer_sizes=[784, 128, 10],
+        activation_functions=['relu', 'sigmoid'],
         loss_function='binary_cross_entropy',
-        weight_init_method='uniform',
-        lower_bound=-0.1,
-        upper_bound=0.1,
-        seed=42
+        weight_init_method='zero'
     )
     
     # Train the model
