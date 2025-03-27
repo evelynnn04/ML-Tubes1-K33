@@ -54,6 +54,18 @@ def softmax_derivative(x):
     
     return jacobian_matrix
 
+def leaky_relu(x, alpha=0.01):
+    return np.where(x > 0, x, alpha * x)
+
+def leaky_relu_derivative(x, alpha=0.01):
+    return np.where(x > 0, 1, alpha)
+
+def elu(x, alpha=1.0):
+    return np.where(x > 0, x, alpha * (np.exp(x) - 1))
+
+def elu_derivative(x, alpha=1.0):
+    return np.where(x > 0, 1, alpha * np.exp(x))
+
 def apply_activation(x, activation_name):
     """Apply activation function to input"""
     if activation_name == 'linear':
@@ -66,6 +78,10 @@ def apply_activation(x, activation_name):
         return sigmoid(x)
     elif activation_name == 'softmax':
         return softmax(x)
+    elif activation_name == 'leaky_relu':
+        return leaky_relu(x)
+    elif activation_name == 'elu':
+        return elu(x)
     else:
         raise ValueError(f"Activation function {activation_name} not supported.")
 
@@ -81,5 +97,15 @@ def apply_activation_derivative(x, activation_name):
         return sigmoid_derivative(x)
     elif activation_name == 'softmax':
         return softmax_derivative(x)
+    elif activation_name == 'leaky_relu':
+        return leaky_relu_derivative(x)
+    elif activation_name == 'elu':
+        return elu_derivative(x)
     else:
         raise ValueError(f"Activation function {activation_name} not supported.")
+    
+
+'''
+References:
+https://medium.com/@juanc.olamendy/understanding-relu-leakyrelu-and-prelu-a-comprehensive-guide-20f2775d3d64
+'''
