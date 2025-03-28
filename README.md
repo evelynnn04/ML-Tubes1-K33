@@ -33,7 +33,8 @@ repository/
 │   │   ├── varValue.py     # Fungsi utilitas tambahan
 │   │   └── notebook.ipynb  # Notebook untuk pengujian model
 │   ├── basic
-│   │   ├── ANN_basic.ipynb # Notebook untuk pengujian model
+│   │   ├── FFNN_basic_class.py         # Implementasi utama FFNN
+│   │   ├── FFNN_basic.ipynb            # Notebook untuk pengujian model
 ├── doc/
 │   └── Tubes1_13522013_13522083_13522103.pdf     # Laporan
 │
