@@ -1,95 +1,4026 @@
 // Neural Network Architecture
 digraph {
-	node [fontsize=10 shape=circle style=filled]
-	subgraph cluster_layer_0 {
-		color=lightgrey label="Layer 0" style=filled
-		L0_N0 [label="Layer 0
-Neuron 0
-softmax" fillcolor=yellow]
-		L0_N1 [label="Layer 0
-Neuron 1
-softmax" fillcolor=yellow]
-		L0_N2 [label="Layer 0
-Neuron 2
-softmax" fillcolor=yellow]
-		L0_N3 [label="Layer 0
-Neuron 3
-softmax" fillcolor=yellow]
-	}
-	subgraph cluster_layer_1 {
-		color=lightgrey label="Layer 1" style=filled
-		L1_N0 [label="Layer 1
-Neuron 0
-softmax" fillcolor=lightblue]
-		L1_N1 [label="Layer 1
-Neuron 1
-softmax" fillcolor=lightblue]
-		L1_N2 [label="Layer 1
-Neuron 2
-softmax" fillcolor=lightblue]
-	}
-	subgraph cluster_layer_2 {
-		color=lightgrey label="Layer 2" style=filled
-		L2_N0 [label="Layer 2
-Neuron 0
-softmax" fillcolor=lightblue]
-		L2_N1 [label="Layer 2
-Neuron 1
-softmax" fillcolor=lightblue]
-	}
-	subgraph cluster_layer_3 {
-		color=lightgrey label="Layer 3" style=filled
-		L3_N0 [label="Layer 3
-Neuron 0
-softmax" fillcolor=salmon]
-		L3_N1 [label="Layer 3
-Neuron 1
-softmax" fillcolor=salmon]
-		L3_N2 [label="Layer 3
-Neuron 2
-softmax" fillcolor=salmon]
-		L3_N3 [label="Layer 3
-Neuron 3
-softmax" fillcolor=salmon]
-		L3_N4 [label="Layer 3
-Neuron 4
-softmax" fillcolor=salmon]
-		L3_N5 [label="Layer 3
-Neuron 5
-softmax" fillcolor=salmon]
-		L3_N6 [label="Layer 3
-Neuron 6
-softmax" fillcolor=salmon]
-		L3_N7 [label="Layer 3
-Neuron 7
-softmax" fillcolor=salmon]
-		L3_N8 [label="Layer 3
-Neuron 8
-softmax" fillcolor=salmon]
-		L3_N9 [label="Layer 3
-Neuron 9
-softmax" fillcolor=salmon]
-	}
-	L0_N0 -> L1_N0 [label=-0.0080 color=red penwidth=0.016]
-	L0_N0 -> L1_N1 [label=0.0074 color=blue penwidth=0.0148]
-	L0_N0 -> L1_N2 [label=-0.0286 color=red penwidth=0.0572]
-	L0_N1 -> L1_N0 [label=0.0122 color=blue penwidth=0.0244]
-	L0_N1 -> L1_N1 [label=0.0026 color=blue penwidth=0.0052]
-	L0_N1 -> L1_N2 [label=0.0316 color=blue penwidth=0.0632]
-	L0_N2 -> L1_N0 [label=0.0141 color=blue penwidth=0.0282]
-	L0_N2 -> L1_N1 [label=0.0060 color=blue penwidth=0.012]
-	L0_N2 -> L1_N2 [label=-0.0217 color=red penwidth=0.0434]
-	L0_N3 -> L1_N0 [label=-0.0053 color=red penwidth=0.0106]
-	L0_N3 -> L1_N1 [label=0.0064 color=blue penwidth=0.0128]
-	L0_N3 -> L1_N2 [label=0.0205 color=blue penwidth=0.041]
-	L1_N0 -> L2_N0 [label=-0.2641 color=red penwidth=0.5281493594585468]
-	L1_N0 -> L2_N1 [label=0.1319 color=blue penwidth=0.26384693722487945]
-	L1_N1 -> L2_N0 [label=0.2496 color=blue penwidth=0.4991521561531887]
-	L1_N1 -> L2_N1 [label=-0.1862 color=red penwidth=0.37249437284159653]
-	L1_N2 -> L2_N0 [label=0.3710 color=blue penwidth=0.7420794112309037]
-	L1_N2 -> L2_N1 [label=-0.2063 color=red penwidth=0.41255814765751886]
-	L2_N0 -> L3_N0 [label=-0.4008 color=red penwidth=0.801694010745874]
-	L2_N0 -> L3_N1 [label=0.0778 color=blue penwidth=0.15557443301746837]
-	L2_N1 -> L3_N0 [label=-0.3392 color=red penwidth=0.6784498763778394]
-	L2_N1 -> L3_N1 [label=-0.4304 color=red penwidth=0.8608663726147123]
+	node [fillcolor=lightblue shape=circle style=filled]
+	x0 [label=x0 fillcolor=lightgreen shape=circle]
+	x1 [label=x1 fillcolor=lightgreen shape=circle]
+	x2 [label=x2 fillcolor=lightgreen shape=circle]
+	x3 [label=x3 fillcolor=lightgreen shape=circle]
+	x4 [label=x4 fillcolor=lightgreen shape=circle]
+	x5 [label=x5 fillcolor=lightgreen shape=circle]
+	x6 [label=x6 fillcolor=lightgreen shape=circle]
+	x7 [label=x7 fillcolor=lightgreen shape=circle]
+	x8 [label=x8 fillcolor=lightgreen shape=circle]
+	x9 [label=x9 fillcolor=lightgreen shape=circle]
+	x10 [label=x10 fillcolor=lightgreen shape=circle]
+	x11 [label=x11 fillcolor=lightgreen shape=circle]
+	x12 [label=x12 fillcolor=lightgreen shape=circle]
+	x13 [label=x13 fillcolor=lightgreen shape=circle]
+	x14 [label=x14 fillcolor=lightgreen shape=circle]
+	x15 [label=x15 fillcolor=lightgreen shape=circle]
+	x16 [label=x16 fillcolor=lightgreen shape=circle]
+	x17 [label=x17 fillcolor=lightgreen shape=circle]
+	x18 [label=x18 fillcolor=lightgreen shape=circle]
+	x19 [label=x19 fillcolor=lightgreen shape=circle]
+	x20 [label=x20 fillcolor=lightgreen shape=circle]
+	x21 [label=x21 fillcolor=lightgreen shape=circle]
+	x22 [label=x22 fillcolor=lightgreen shape=circle]
+	x23 [label=x23 fillcolor=lightgreen shape=circle]
+	x24 [label=x24 fillcolor=lightgreen shape=circle]
+	x25 [label=x25 fillcolor=lightgreen shape=circle]
+	x26 [label=x26 fillcolor=lightgreen shape=circle]
+	x27 [label=x27 fillcolor=lightgreen shape=circle]
+	x28 [label=x28 fillcolor=lightgreen shape=circle]
+	x29 [label=x29 fillcolor=lightgreen shape=circle]
+	x30 [label=x30 fillcolor=lightgreen shape=circle]
+	x31 [label=x31 fillcolor=lightgreen shape=circle]
+	x32 [label=x32 fillcolor=lightgreen shape=circle]
+	x33 [label=x33 fillcolor=lightgreen shape=circle]
+	x34 [label=x34 fillcolor=lightgreen shape=circle]
+	x35 [label=x35 fillcolor=lightgreen shape=circle]
+	x36 [label=x36 fillcolor=lightgreen shape=circle]
+	x37 [label=x37 fillcolor=lightgreen shape=circle]
+	x38 [label=x38 fillcolor=lightgreen shape=circle]
+	x39 [label=x39 fillcolor=lightgreen shape=circle]
+	x40 [label=x40 fillcolor=lightgreen shape=circle]
+	x41 [label=x41 fillcolor=lightgreen shape=circle]
+	x42 [label=x42 fillcolor=lightgreen shape=circle]
+	x43 [label=x43 fillcolor=lightgreen shape=circle]
+	x44 [label=x44 fillcolor=lightgreen shape=circle]
+	x45 [label=x45 fillcolor=lightgreen shape=circle]
+	x46 [label=x46 fillcolor=lightgreen shape=circle]
+	x47 [label=x47 fillcolor=lightgreen shape=circle]
+	x48 [label=x48 fillcolor=lightgreen shape=circle]
+	x49 [label=x49 fillcolor=lightgreen shape=circle]
+	x50 [label=x50 fillcolor=lightgreen shape=circle]
+	x51 [label=x51 fillcolor=lightgreen shape=circle]
+	x52 [label=x52 fillcolor=lightgreen shape=circle]
+	x53 [label=x53 fillcolor=lightgreen shape=circle]
+	x54 [label=x54 fillcolor=lightgreen shape=circle]
+	x55 [label=x55 fillcolor=lightgreen shape=circle]
+	x56 [label=x56 fillcolor=lightgreen shape=circle]
+	x57 [label=x57 fillcolor=lightgreen shape=circle]
+	x58 [label=x58 fillcolor=lightgreen shape=circle]
+	x59 [label=x59 fillcolor=lightgreen shape=circle]
+	x60 [label=x60 fillcolor=lightgreen shape=circle]
+	x61 [label=x61 fillcolor=lightgreen shape=circle]
+	x62 [label=x62 fillcolor=lightgreen shape=circle]
+	x63 [label=x63 fillcolor=lightgreen shape=circle]
+	x64 [label=x64 fillcolor=lightgreen shape=circle]
+	x65 [label=x65 fillcolor=lightgreen shape=circle]
+	x66 [label=x66 fillcolor=lightgreen shape=circle]
+	x67 [label=x67 fillcolor=lightgreen shape=circle]
+	x68 [label=x68 fillcolor=lightgreen shape=circle]
+	x69 [label=x69 fillcolor=lightgreen shape=circle]
+	x70 [label=x70 fillcolor=lightgreen shape=circle]
+	x71 [label=x71 fillcolor=lightgreen shape=circle]
+	x72 [label=x72 fillcolor=lightgreen shape=circle]
+	x73 [label=x73 fillcolor=lightgreen shape=circle]
+	x74 [label=x74 fillcolor=lightgreen shape=circle]
+	x75 [label=x75 fillcolor=lightgreen shape=circle]
+	x76 [label=x76 fillcolor=lightgreen shape=circle]
+	x77 [label=x77 fillcolor=lightgreen shape=circle]
+	x78 [label=x78 fillcolor=lightgreen shape=circle]
+	x79 [label=x79 fillcolor=lightgreen shape=circle]
+	x80 [label=x80 fillcolor=lightgreen shape=circle]
+	x81 [label=x81 fillcolor=lightgreen shape=circle]
+	x82 [label=x82 fillcolor=lightgreen shape=circle]
+	x83 [label=x83 fillcolor=lightgreen shape=circle]
+	x84 [label=x84 fillcolor=lightgreen shape=circle]
+	x85 [label=x85 fillcolor=lightgreen shape=circle]
+	x86 [label=x86 fillcolor=lightgreen shape=circle]
+	x87 [label=x87 fillcolor=lightgreen shape=circle]
+	x88 [label=x88 fillcolor=lightgreen shape=circle]
+	x89 [label=x89 fillcolor=lightgreen shape=circle]
+	x90 [label=x90 fillcolor=lightgreen shape=circle]
+	x91 [label=x91 fillcolor=lightgreen shape=circle]
+	x92 [label=x92 fillcolor=lightgreen shape=circle]
+	x93 [label=x93 fillcolor=lightgreen shape=circle]
+	x94 [label=x94 fillcolor=lightgreen shape=circle]
+	x95 [label=x95 fillcolor=lightgreen shape=circle]
+	x96 [label=x96 fillcolor=lightgreen shape=circle]
+	x97 [label=x97 fillcolor=lightgreen shape=circle]
+	x98 [label=x98 fillcolor=lightgreen shape=circle]
+	x99 [label=x99 fillcolor=lightgreen shape=circle]
+	x100 [label=x100 fillcolor=lightgreen shape=circle]
+	x101 [label=x101 fillcolor=lightgreen shape=circle]
+	x102 [label=x102 fillcolor=lightgreen shape=circle]
+	x103 [label=x103 fillcolor=lightgreen shape=circle]
+	x104 [label=x104 fillcolor=lightgreen shape=circle]
+	x105 [label=x105 fillcolor=lightgreen shape=circle]
+	x106 [label=x106 fillcolor=lightgreen shape=circle]
+	x107 [label=x107 fillcolor=lightgreen shape=circle]
+	x108 [label=x108 fillcolor=lightgreen shape=circle]
+	x109 [label=x109 fillcolor=lightgreen shape=circle]
+	x110 [label=x110 fillcolor=lightgreen shape=circle]
+	x111 [label=x111 fillcolor=lightgreen shape=circle]
+	x112 [label=x112 fillcolor=lightgreen shape=circle]
+	x113 [label=x113 fillcolor=lightgreen shape=circle]
+	x114 [label=x114 fillcolor=lightgreen shape=circle]
+	x115 [label=x115 fillcolor=lightgreen shape=circle]
+	x116 [label=x116 fillcolor=lightgreen shape=circle]
+	x117 [label=x117 fillcolor=lightgreen shape=circle]
+	x118 [label=x118 fillcolor=lightgreen shape=circle]
+	x119 [label=x119 fillcolor=lightgreen shape=circle]
+	x120 [label=x120 fillcolor=lightgreen shape=circle]
+	x121 [label=x121 fillcolor=lightgreen shape=circle]
+	x122 [label=x122 fillcolor=lightgreen shape=circle]
+	x123 [label=x123 fillcolor=lightgreen shape=circle]
+	x124 [label=x124 fillcolor=lightgreen shape=circle]
+	x125 [label=x125 fillcolor=lightgreen shape=circle]
+	x126 [label=x126 fillcolor=lightgreen shape=circle]
+	x127 [label=x127 fillcolor=lightgreen shape=circle]
+	x128 [label=x128 fillcolor=lightgreen shape=circle]
+	x129 [label=x129 fillcolor=lightgreen shape=circle]
+	x130 [label=x130 fillcolor=lightgreen shape=circle]
+	x131 [label=x131 fillcolor=lightgreen shape=circle]
+	x132 [label=x132 fillcolor=lightgreen shape=circle]
+	x133 [label=x133 fillcolor=lightgreen shape=circle]
+	x134 [label=x134 fillcolor=lightgreen shape=circle]
+	x135 [label=x135 fillcolor=lightgreen shape=circle]
+	x136 [label=x136 fillcolor=lightgreen shape=circle]
+	x137 [label=x137 fillcolor=lightgreen shape=circle]
+	x138 [label=x138 fillcolor=lightgreen shape=circle]
+	x139 [label=x139 fillcolor=lightgreen shape=circle]
+	x140 [label=x140 fillcolor=lightgreen shape=circle]
+	x141 [label=x141 fillcolor=lightgreen shape=circle]
+	x142 [label=x142 fillcolor=lightgreen shape=circle]
+	x143 [label=x143 fillcolor=lightgreen shape=circle]
+	x144 [label=x144 fillcolor=lightgreen shape=circle]
+	x145 [label=x145 fillcolor=lightgreen shape=circle]
+	x146 [label=x146 fillcolor=lightgreen shape=circle]
+	x147 [label=x147 fillcolor=lightgreen shape=circle]
+	x148 [label=x148 fillcolor=lightgreen shape=circle]
+	x149 [label=x149 fillcolor=lightgreen shape=circle]
+	x150 [label=x150 fillcolor=lightgreen shape=circle]
+	x151 [label=x151 fillcolor=lightgreen shape=circle]
+	x152 [label=x152 fillcolor=lightgreen shape=circle]
+	x153 [label=x153 fillcolor=lightgreen shape=circle]
+	x154 [label=x154 fillcolor=lightgreen shape=circle]
+	x155 [label=x155 fillcolor=lightgreen shape=circle]
+	x156 [label=x156 fillcolor=lightgreen shape=circle]
+	x157 [label=x157 fillcolor=lightgreen shape=circle]
+	x158 [label=x158 fillcolor=lightgreen shape=circle]
+	x159 [label=x159 fillcolor=lightgreen shape=circle]
+	x160 [label=x160 fillcolor=lightgreen shape=circle]
+	x161 [label=x161 fillcolor=lightgreen shape=circle]
+	x162 [label=x162 fillcolor=lightgreen shape=circle]
+	x163 [label=x163 fillcolor=lightgreen shape=circle]
+	x164 [label=x164 fillcolor=lightgreen shape=circle]
+	x165 [label=x165 fillcolor=lightgreen shape=circle]
+	x166 [label=x166 fillcolor=lightgreen shape=circle]
+	x167 [label=x167 fillcolor=lightgreen shape=circle]
+	x168 [label=x168 fillcolor=lightgreen shape=circle]
+	x169 [label=x169 fillcolor=lightgreen shape=circle]
+	x170 [label=x170 fillcolor=lightgreen shape=circle]
+	x171 [label=x171 fillcolor=lightgreen shape=circle]
+	x172 [label=x172 fillcolor=lightgreen shape=circle]
+	x173 [label=x173 fillcolor=lightgreen shape=circle]
+	x174 [label=x174 fillcolor=lightgreen shape=circle]
+	x175 [label=x175 fillcolor=lightgreen shape=circle]
+	x176 [label=x176 fillcolor=lightgreen shape=circle]
+	x177 [label=x177 fillcolor=lightgreen shape=circle]
+	x178 [label=x178 fillcolor=lightgreen shape=circle]
+	x179 [label=x179 fillcolor=lightgreen shape=circle]
+	x180 [label=x180 fillcolor=lightgreen shape=circle]
+	x181 [label=x181 fillcolor=lightgreen shape=circle]
+	x182 [label=x182 fillcolor=lightgreen shape=circle]
+	x183 [label=x183 fillcolor=lightgreen shape=circle]
+	x184 [label=x184 fillcolor=lightgreen shape=circle]
+	x185 [label=x185 fillcolor=lightgreen shape=circle]
+	x186 [label=x186 fillcolor=lightgreen shape=circle]
+	x187 [label=x187 fillcolor=lightgreen shape=circle]
+	x188 [label=x188 fillcolor=lightgreen shape=circle]
+	x189 [label=x189 fillcolor=lightgreen shape=circle]
+	x190 [label=x190 fillcolor=lightgreen shape=circle]
+	x191 [label=x191 fillcolor=lightgreen shape=circle]
+	x192 [label=x192 fillcolor=lightgreen shape=circle]
+	x193 [label=x193 fillcolor=lightgreen shape=circle]
+	x194 [label=x194 fillcolor=lightgreen shape=circle]
+	x195 [label=x195 fillcolor=lightgreen shape=circle]
+	x196 [label=x196 fillcolor=lightgreen shape=circle]
+	x197 [label=x197 fillcolor=lightgreen shape=circle]
+	x198 [label=x198 fillcolor=lightgreen shape=circle]
+	x199 [label=x199 fillcolor=lightgreen shape=circle]
+	x200 [label=x200 fillcolor=lightgreen shape=circle]
+	x201 [label=x201 fillcolor=lightgreen shape=circle]
+	x202 [label=x202 fillcolor=lightgreen shape=circle]
+	x203 [label=x203 fillcolor=lightgreen shape=circle]
+	x204 [label=x204 fillcolor=lightgreen shape=circle]
+	x205 [label=x205 fillcolor=lightgreen shape=circle]
+	x206 [label=x206 fillcolor=lightgreen shape=circle]
+	x207 [label=x207 fillcolor=lightgreen shape=circle]
+	x208 [label=x208 fillcolor=lightgreen shape=circle]
+	x209 [label=x209 fillcolor=lightgreen shape=circle]
+	x210 [label=x210 fillcolor=lightgreen shape=circle]
+	x211 [label=x211 fillcolor=lightgreen shape=circle]
+	x212 [label=x212 fillcolor=lightgreen shape=circle]
+	x213 [label=x213 fillcolor=lightgreen shape=circle]
+	x214 [label=x214 fillcolor=lightgreen shape=circle]
+	x215 [label=x215 fillcolor=lightgreen shape=circle]
+	x216 [label=x216 fillcolor=lightgreen shape=circle]
+	x217 [label=x217 fillcolor=lightgreen shape=circle]
+	x218 [label=x218 fillcolor=lightgreen shape=circle]
+	x219 [label=x219 fillcolor=lightgreen shape=circle]
+	x220 [label=x220 fillcolor=lightgreen shape=circle]
+	x221 [label=x221 fillcolor=lightgreen shape=circle]
+	x222 [label=x222 fillcolor=lightgreen shape=circle]
+	x223 [label=x223 fillcolor=lightgreen shape=circle]
+	x224 [label=x224 fillcolor=lightgreen shape=circle]
+	x225 [label=x225 fillcolor=lightgreen shape=circle]
+	x226 [label=x226 fillcolor=lightgreen shape=circle]
+	x227 [label=x227 fillcolor=lightgreen shape=circle]
+	x228 [label=x228 fillcolor=lightgreen shape=circle]
+	x229 [label=x229 fillcolor=lightgreen shape=circle]
+	x230 [label=x230 fillcolor=lightgreen shape=circle]
+	x231 [label=x231 fillcolor=lightgreen shape=circle]
+	x232 [label=x232 fillcolor=lightgreen shape=circle]
+	x233 [label=x233 fillcolor=lightgreen shape=circle]
+	x234 [label=x234 fillcolor=lightgreen shape=circle]
+	x235 [label=x235 fillcolor=lightgreen shape=circle]
+	x236 [label=x236 fillcolor=lightgreen shape=circle]
+	x237 [label=x237 fillcolor=lightgreen shape=circle]
+	x238 [label=x238 fillcolor=lightgreen shape=circle]
+	x239 [label=x239 fillcolor=lightgreen shape=circle]
+	x240 [label=x240 fillcolor=lightgreen shape=circle]
+	x241 [label=x241 fillcolor=lightgreen shape=circle]
+	x242 [label=x242 fillcolor=lightgreen shape=circle]
+	x243 [label=x243 fillcolor=lightgreen shape=circle]
+	x244 [label=x244 fillcolor=lightgreen shape=circle]
+	x245 [label=x245 fillcolor=lightgreen shape=circle]
+	x246 [label=x246 fillcolor=lightgreen shape=circle]
+	x247 [label=x247 fillcolor=lightgreen shape=circle]
+	x248 [label=x248 fillcolor=lightgreen shape=circle]
+	x249 [label=x249 fillcolor=lightgreen shape=circle]
+	x250 [label=x250 fillcolor=lightgreen shape=circle]
+	x251 [label=x251 fillcolor=lightgreen shape=circle]
+	x252 [label=x252 fillcolor=lightgreen shape=circle]
+	x253 [label=x253 fillcolor=lightgreen shape=circle]
+	x254 [label=x254 fillcolor=lightgreen shape=circle]
+	x255 [label=x255 fillcolor=lightgreen shape=circle]
+	x256 [label=x256 fillcolor=lightgreen shape=circle]
+	x257 [label=x257 fillcolor=lightgreen shape=circle]
+	x258 [label=x258 fillcolor=lightgreen shape=circle]
+	x259 [label=x259 fillcolor=lightgreen shape=circle]
+	x260 [label=x260 fillcolor=lightgreen shape=circle]
+	x261 [label=x261 fillcolor=lightgreen shape=circle]
+	x262 [label=x262 fillcolor=lightgreen shape=circle]
+	x263 [label=x263 fillcolor=lightgreen shape=circle]
+	x264 [label=x264 fillcolor=lightgreen shape=circle]
+	x265 [label=x265 fillcolor=lightgreen shape=circle]
+	x266 [label=x266 fillcolor=lightgreen shape=circle]
+	x267 [label=x267 fillcolor=lightgreen shape=circle]
+	x268 [label=x268 fillcolor=lightgreen shape=circle]
+	x269 [label=x269 fillcolor=lightgreen shape=circle]
+	x270 [label=x270 fillcolor=lightgreen shape=circle]
+	x271 [label=x271 fillcolor=lightgreen shape=circle]
+	x272 [label=x272 fillcolor=lightgreen shape=circle]
+	x273 [label=x273 fillcolor=lightgreen shape=circle]
+	x274 [label=x274 fillcolor=lightgreen shape=circle]
+	x275 [label=x275 fillcolor=lightgreen shape=circle]
+	x276 [label=x276 fillcolor=lightgreen shape=circle]
+	x277 [label=x277 fillcolor=lightgreen shape=circle]
+	x278 [label=x278 fillcolor=lightgreen shape=circle]
+	x279 [label=x279 fillcolor=lightgreen shape=circle]
+	x280 [label=x280 fillcolor=lightgreen shape=circle]
+	x281 [label=x281 fillcolor=lightgreen shape=circle]
+	x282 [label=x282 fillcolor=lightgreen shape=circle]
+	x283 [label=x283 fillcolor=lightgreen shape=circle]
+	x284 [label=x284 fillcolor=lightgreen shape=circle]
+	x285 [label=x285 fillcolor=lightgreen shape=circle]
+	x286 [label=x286 fillcolor=lightgreen shape=circle]
+	x287 [label=x287 fillcolor=lightgreen shape=circle]
+	x288 [label=x288 fillcolor=lightgreen shape=circle]
+	x289 [label=x289 fillcolor=lightgreen shape=circle]
+	x290 [label=x290 fillcolor=lightgreen shape=circle]
+	x291 [label=x291 fillcolor=lightgreen shape=circle]
+	x292 [label=x292 fillcolor=lightgreen shape=circle]
+	x293 [label=x293 fillcolor=lightgreen shape=circle]
+	x294 [label=x294 fillcolor=lightgreen shape=circle]
+	x295 [label=x295 fillcolor=lightgreen shape=circle]
+	x296 [label=x296 fillcolor=lightgreen shape=circle]
+	x297 [label=x297 fillcolor=lightgreen shape=circle]
+	x298 [label=x298 fillcolor=lightgreen shape=circle]
+	x299 [label=x299 fillcolor=lightgreen shape=circle]
+	x300 [label=x300 fillcolor=lightgreen shape=circle]
+	x301 [label=x301 fillcolor=lightgreen shape=circle]
+	x302 [label=x302 fillcolor=lightgreen shape=circle]
+	x303 [label=x303 fillcolor=lightgreen shape=circle]
+	x304 [label=x304 fillcolor=lightgreen shape=circle]
+	x305 [label=x305 fillcolor=lightgreen shape=circle]
+	x306 [label=x306 fillcolor=lightgreen shape=circle]
+	x307 [label=x307 fillcolor=lightgreen shape=circle]
+	x308 [label=x308 fillcolor=lightgreen shape=circle]
+	x309 [label=x309 fillcolor=lightgreen shape=circle]
+	x310 [label=x310 fillcolor=lightgreen shape=circle]
+	x311 [label=x311 fillcolor=lightgreen shape=circle]
+	x312 [label=x312 fillcolor=lightgreen shape=circle]
+	x313 [label=x313 fillcolor=lightgreen shape=circle]
+	x314 [label=x314 fillcolor=lightgreen shape=circle]
+	x315 [label=x315 fillcolor=lightgreen shape=circle]
+	x316 [label=x316 fillcolor=lightgreen shape=circle]
+	x317 [label=x317 fillcolor=lightgreen shape=circle]
+	x318 [label=x318 fillcolor=lightgreen shape=circle]
+	x319 [label=x319 fillcolor=lightgreen shape=circle]
+	x320 [label=x320 fillcolor=lightgreen shape=circle]
+	x321 [label=x321 fillcolor=lightgreen shape=circle]
+	x322 [label=x322 fillcolor=lightgreen shape=circle]
+	x323 [label=x323 fillcolor=lightgreen shape=circle]
+	x324 [label=x324 fillcolor=lightgreen shape=circle]
+	x325 [label=x325 fillcolor=lightgreen shape=circle]
+	x326 [label=x326 fillcolor=lightgreen shape=circle]
+	x327 [label=x327 fillcolor=lightgreen shape=circle]
+	x328 [label=x328 fillcolor=lightgreen shape=circle]
+	x329 [label=x329 fillcolor=lightgreen shape=circle]
+	x330 [label=x330 fillcolor=lightgreen shape=circle]
+	x331 [label=x331 fillcolor=lightgreen shape=circle]
+	x332 [label=x332 fillcolor=lightgreen shape=circle]
+	x333 [label=x333 fillcolor=lightgreen shape=circle]
+	x334 [label=x334 fillcolor=lightgreen shape=circle]
+	x335 [label=x335 fillcolor=lightgreen shape=circle]
+	x336 [label=x336 fillcolor=lightgreen shape=circle]
+	x337 [label=x337 fillcolor=lightgreen shape=circle]
+	x338 [label=x338 fillcolor=lightgreen shape=circle]
+	x339 [label=x339 fillcolor=lightgreen shape=circle]
+	x340 [label=x340 fillcolor=lightgreen shape=circle]
+	x341 [label=x341 fillcolor=lightgreen shape=circle]
+	x342 [label=x342 fillcolor=lightgreen shape=circle]
+	x343 [label=x343 fillcolor=lightgreen shape=circle]
+	x344 [label=x344 fillcolor=lightgreen shape=circle]
+	x345 [label=x345 fillcolor=lightgreen shape=circle]
+	x346 [label=x346 fillcolor=lightgreen shape=circle]
+	x347 [label=x347 fillcolor=lightgreen shape=circle]
+	x348 [label=x348 fillcolor=lightgreen shape=circle]
+	x349 [label=x349 fillcolor=lightgreen shape=circle]
+	x350 [label=x350 fillcolor=lightgreen shape=circle]
+	x351 [label=x351 fillcolor=lightgreen shape=circle]
+	x352 [label=x352 fillcolor=lightgreen shape=circle]
+	x353 [label=x353 fillcolor=lightgreen shape=circle]
+	x354 [label=x354 fillcolor=lightgreen shape=circle]
+	x355 [label=x355 fillcolor=lightgreen shape=circle]
+	x356 [label=x356 fillcolor=lightgreen shape=circle]
+	x357 [label=x357 fillcolor=lightgreen shape=circle]
+	x358 [label=x358 fillcolor=lightgreen shape=circle]
+	x359 [label=x359 fillcolor=lightgreen shape=circle]
+	x360 [label=x360 fillcolor=lightgreen shape=circle]
+	x361 [label=x361 fillcolor=lightgreen shape=circle]
+	x362 [label=x362 fillcolor=lightgreen shape=circle]
+	x363 [label=x363 fillcolor=lightgreen shape=circle]
+	x364 [label=x364 fillcolor=lightgreen shape=circle]
+	x365 [label=x365 fillcolor=lightgreen shape=circle]
+	x366 [label=x366 fillcolor=lightgreen shape=circle]
+	x367 [label=x367 fillcolor=lightgreen shape=circle]
+	x368 [label=x368 fillcolor=lightgreen shape=circle]
+	x369 [label=x369 fillcolor=lightgreen shape=circle]
+	x370 [label=x370 fillcolor=lightgreen shape=circle]
+	x371 [label=x371 fillcolor=lightgreen shape=circle]
+	x372 [label=x372 fillcolor=lightgreen shape=circle]
+	x373 [label=x373 fillcolor=lightgreen shape=circle]
+	x374 [label=x374 fillcolor=lightgreen shape=circle]
+	x375 [label=x375 fillcolor=lightgreen shape=circle]
+	x376 [label=x376 fillcolor=lightgreen shape=circle]
+	x377 [label=x377 fillcolor=lightgreen shape=circle]
+	x378 [label=x378 fillcolor=lightgreen shape=circle]
+	x379 [label=x379 fillcolor=lightgreen shape=circle]
+	x380 [label=x380 fillcolor=lightgreen shape=circle]
+	x381 [label=x381 fillcolor=lightgreen shape=circle]
+	x382 [label=x382 fillcolor=lightgreen shape=circle]
+	x383 [label=x383 fillcolor=lightgreen shape=circle]
+	x384 [label=x384 fillcolor=lightgreen shape=circle]
+	x385 [label=x385 fillcolor=lightgreen shape=circle]
+	x386 [label=x386 fillcolor=lightgreen shape=circle]
+	x387 [label=x387 fillcolor=lightgreen shape=circle]
+	x388 [label=x388 fillcolor=lightgreen shape=circle]
+	x389 [label=x389 fillcolor=lightgreen shape=circle]
+	x390 [label=x390 fillcolor=lightgreen shape=circle]
+	x391 [label=x391 fillcolor=lightgreen shape=circle]
+	x392 [label=x392 fillcolor=lightgreen shape=circle]
+	x393 [label=x393 fillcolor=lightgreen shape=circle]
+	x394 [label=x394 fillcolor=lightgreen shape=circle]
+	x395 [label=x395 fillcolor=lightgreen shape=circle]
+	x396 [label=x396 fillcolor=lightgreen shape=circle]
+	x397 [label=x397 fillcolor=lightgreen shape=circle]
+	x398 [label=x398 fillcolor=lightgreen shape=circle]
+	x399 [label=x399 fillcolor=lightgreen shape=circle]
+	x400 [label=x400 fillcolor=lightgreen shape=circle]
+	x401 [label=x401 fillcolor=lightgreen shape=circle]
+	x402 [label=x402 fillcolor=lightgreen shape=circle]
+	x403 [label=x403 fillcolor=lightgreen shape=circle]
+	x404 [label=x404 fillcolor=lightgreen shape=circle]
+	x405 [label=x405 fillcolor=lightgreen shape=circle]
+	x406 [label=x406 fillcolor=lightgreen shape=circle]
+	x407 [label=x407 fillcolor=lightgreen shape=circle]
+	x408 [label=x408 fillcolor=lightgreen shape=circle]
+	x409 [label=x409 fillcolor=lightgreen shape=circle]
+	x410 [label=x410 fillcolor=lightgreen shape=circle]
+	x411 [label=x411 fillcolor=lightgreen shape=circle]
+	x412 [label=x412 fillcolor=lightgreen shape=circle]
+	x413 [label=x413 fillcolor=lightgreen shape=circle]
+	x414 [label=x414 fillcolor=lightgreen shape=circle]
+	x415 [label=x415 fillcolor=lightgreen shape=circle]
+	x416 [label=x416 fillcolor=lightgreen shape=circle]
+	x417 [label=x417 fillcolor=lightgreen shape=circle]
+	x418 [label=x418 fillcolor=lightgreen shape=circle]
+	x419 [label=x419 fillcolor=lightgreen shape=circle]
+	x420 [label=x420 fillcolor=lightgreen shape=circle]
+	x421 [label=x421 fillcolor=lightgreen shape=circle]
+	x422 [label=x422 fillcolor=lightgreen shape=circle]
+	x423 [label=x423 fillcolor=lightgreen shape=circle]
+	x424 [label=x424 fillcolor=lightgreen shape=circle]
+	x425 [label=x425 fillcolor=lightgreen shape=circle]
+	x426 [label=x426 fillcolor=lightgreen shape=circle]
+	x427 [label=x427 fillcolor=lightgreen shape=circle]
+	x428 [label=x428 fillcolor=lightgreen shape=circle]
+	x429 [label=x429 fillcolor=lightgreen shape=circle]
+	x430 [label=x430 fillcolor=lightgreen shape=circle]
+	x431 [label=x431 fillcolor=lightgreen shape=circle]
+	x432 [label=x432 fillcolor=lightgreen shape=circle]
+	x433 [label=x433 fillcolor=lightgreen shape=circle]
+	x434 [label=x434 fillcolor=lightgreen shape=circle]
+	x435 [label=x435 fillcolor=lightgreen shape=circle]
+	x436 [label=x436 fillcolor=lightgreen shape=circle]
+	x437 [label=x437 fillcolor=lightgreen shape=circle]
+	x438 [label=x438 fillcolor=lightgreen shape=circle]
+	x439 [label=x439 fillcolor=lightgreen shape=circle]
+	x440 [label=x440 fillcolor=lightgreen shape=circle]
+	x441 [label=x441 fillcolor=lightgreen shape=circle]
+	x442 [label=x442 fillcolor=lightgreen shape=circle]
+	x443 [label=x443 fillcolor=lightgreen shape=circle]
+	x444 [label=x444 fillcolor=lightgreen shape=circle]
+	x445 [label=x445 fillcolor=lightgreen shape=circle]
+	x446 [label=x446 fillcolor=lightgreen shape=circle]
+	x447 [label=x447 fillcolor=lightgreen shape=circle]
+	x448 [label=x448 fillcolor=lightgreen shape=circle]
+	x449 [label=x449 fillcolor=lightgreen shape=circle]
+	x450 [label=x450 fillcolor=lightgreen shape=circle]
+	x451 [label=x451 fillcolor=lightgreen shape=circle]
+	x452 [label=x452 fillcolor=lightgreen shape=circle]
+	x453 [label=x453 fillcolor=lightgreen shape=circle]
+	x454 [label=x454 fillcolor=lightgreen shape=circle]
+	x455 [label=x455 fillcolor=lightgreen shape=circle]
+	x456 [label=x456 fillcolor=lightgreen shape=circle]
+	x457 [label=x457 fillcolor=lightgreen shape=circle]
+	x458 [label=x458 fillcolor=lightgreen shape=circle]
+	x459 [label=x459 fillcolor=lightgreen shape=circle]
+	x460 [label=x460 fillcolor=lightgreen shape=circle]
+	x461 [label=x461 fillcolor=lightgreen shape=circle]
+	x462 [label=x462 fillcolor=lightgreen shape=circle]
+	x463 [label=x463 fillcolor=lightgreen shape=circle]
+	x464 [label=x464 fillcolor=lightgreen shape=circle]
+	x465 [label=x465 fillcolor=lightgreen shape=circle]
+	x466 [label=x466 fillcolor=lightgreen shape=circle]
+	x467 [label=x467 fillcolor=lightgreen shape=circle]
+	x468 [label=x468 fillcolor=lightgreen shape=circle]
+	x469 [label=x469 fillcolor=lightgreen shape=circle]
+	x470 [label=x470 fillcolor=lightgreen shape=circle]
+	x471 [label=x471 fillcolor=lightgreen shape=circle]
+	x472 [label=x472 fillcolor=lightgreen shape=circle]
+	x473 [label=x473 fillcolor=lightgreen shape=circle]
+	x474 [label=x474 fillcolor=lightgreen shape=circle]
+	x475 [label=x475 fillcolor=lightgreen shape=circle]
+	x476 [label=x476 fillcolor=lightgreen shape=circle]
+	x477 [label=x477 fillcolor=lightgreen shape=circle]
+	x478 [label=x478 fillcolor=lightgreen shape=circle]
+	x479 [label=x479 fillcolor=lightgreen shape=circle]
+	x480 [label=x480 fillcolor=lightgreen shape=circle]
+	x481 [label=x481 fillcolor=lightgreen shape=circle]
+	x482 [label=x482 fillcolor=lightgreen shape=circle]
+	x483 [label=x483 fillcolor=lightgreen shape=circle]
+	x484 [label=x484 fillcolor=lightgreen shape=circle]
+	x485 [label=x485 fillcolor=lightgreen shape=circle]
+	x486 [label=x486 fillcolor=lightgreen shape=circle]
+	x487 [label=x487 fillcolor=lightgreen shape=circle]
+	x488 [label=x488 fillcolor=lightgreen shape=circle]
+	x489 [label=x489 fillcolor=lightgreen shape=circle]
+	x490 [label=x490 fillcolor=lightgreen shape=circle]
+	x491 [label=x491 fillcolor=lightgreen shape=circle]
+	x492 [label=x492 fillcolor=lightgreen shape=circle]
+	x493 [label=x493 fillcolor=lightgreen shape=circle]
+	x494 [label=x494 fillcolor=lightgreen shape=circle]
+	x495 [label=x495 fillcolor=lightgreen shape=circle]
+	x496 [label=x496 fillcolor=lightgreen shape=circle]
+	x497 [label=x497 fillcolor=lightgreen shape=circle]
+	x498 [label=x498 fillcolor=lightgreen shape=circle]
+	x499 [label=x499 fillcolor=lightgreen shape=circle]
+	x500 [label=x500 fillcolor=lightgreen shape=circle]
+	x501 [label=x501 fillcolor=lightgreen shape=circle]
+	x502 [label=x502 fillcolor=lightgreen shape=circle]
+	x503 [label=x503 fillcolor=lightgreen shape=circle]
+	x504 [label=x504 fillcolor=lightgreen shape=circle]
+	x505 [label=x505 fillcolor=lightgreen shape=circle]
+	x506 [label=x506 fillcolor=lightgreen shape=circle]
+	x507 [label=x507 fillcolor=lightgreen shape=circle]
+	x508 [label=x508 fillcolor=lightgreen shape=circle]
+	x509 [label=x509 fillcolor=lightgreen shape=circle]
+	x510 [label=x510 fillcolor=lightgreen shape=circle]
+	x511 [label=x511 fillcolor=lightgreen shape=circle]
+	x512 [label=x512 fillcolor=lightgreen shape=circle]
+	x513 [label=x513 fillcolor=lightgreen shape=circle]
+	x514 [label=x514 fillcolor=lightgreen shape=circle]
+	x515 [label=x515 fillcolor=lightgreen shape=circle]
+	x516 [label=x516 fillcolor=lightgreen shape=circle]
+	x517 [label=x517 fillcolor=lightgreen shape=circle]
+	x518 [label=x518 fillcolor=lightgreen shape=circle]
+	x519 [label=x519 fillcolor=lightgreen shape=circle]
+	x520 [label=x520 fillcolor=lightgreen shape=circle]
+	x521 [label=x521 fillcolor=lightgreen shape=circle]
+	x522 [label=x522 fillcolor=lightgreen shape=circle]
+	x523 [label=x523 fillcolor=lightgreen shape=circle]
+	x524 [label=x524 fillcolor=lightgreen shape=circle]
+	x525 [label=x525 fillcolor=lightgreen shape=circle]
+	x526 [label=x526 fillcolor=lightgreen shape=circle]
+	x527 [label=x527 fillcolor=lightgreen shape=circle]
+	x528 [label=x528 fillcolor=lightgreen shape=circle]
+	x529 [label=x529 fillcolor=lightgreen shape=circle]
+	x530 [label=x530 fillcolor=lightgreen shape=circle]
+	x531 [label=x531 fillcolor=lightgreen shape=circle]
+	x532 [label=x532 fillcolor=lightgreen shape=circle]
+	x533 [label=x533 fillcolor=lightgreen shape=circle]
+	x534 [label=x534 fillcolor=lightgreen shape=circle]
+	x535 [label=x535 fillcolor=lightgreen shape=circle]
+	x536 [label=x536 fillcolor=lightgreen shape=circle]
+	x537 [label=x537 fillcolor=lightgreen shape=circle]
+	x538 [label=x538 fillcolor=lightgreen shape=circle]
+	x539 [label=x539 fillcolor=lightgreen shape=circle]
+	x540 [label=x540 fillcolor=lightgreen shape=circle]
+	x541 [label=x541 fillcolor=lightgreen shape=circle]
+	x542 [label=x542 fillcolor=lightgreen shape=circle]
+	x543 [label=x543 fillcolor=lightgreen shape=circle]
+	x544 [label=x544 fillcolor=lightgreen shape=circle]
+	x545 [label=x545 fillcolor=lightgreen shape=circle]
+	x546 [label=x546 fillcolor=lightgreen shape=circle]
+	x547 [label=x547 fillcolor=lightgreen shape=circle]
+	x548 [label=x548 fillcolor=lightgreen shape=circle]
+	x549 [label=x549 fillcolor=lightgreen shape=circle]
+	x550 [label=x550 fillcolor=lightgreen shape=circle]
+	x551 [label=x551 fillcolor=lightgreen shape=circle]
+	x552 [label=x552 fillcolor=lightgreen shape=circle]
+	x553 [label=x553 fillcolor=lightgreen shape=circle]
+	x554 [label=x554 fillcolor=lightgreen shape=circle]
+	x555 [label=x555 fillcolor=lightgreen shape=circle]
+	x556 [label=x556 fillcolor=lightgreen shape=circle]
+	x557 [label=x557 fillcolor=lightgreen shape=circle]
+	x558 [label=x558 fillcolor=lightgreen shape=circle]
+	x559 [label=x559 fillcolor=lightgreen shape=circle]
+	x560 [label=x560 fillcolor=lightgreen shape=circle]
+	x561 [label=x561 fillcolor=lightgreen shape=circle]
+	x562 [label=x562 fillcolor=lightgreen shape=circle]
+	x563 [label=x563 fillcolor=lightgreen shape=circle]
+	x564 [label=x564 fillcolor=lightgreen shape=circle]
+	x565 [label=x565 fillcolor=lightgreen shape=circle]
+	x566 [label=x566 fillcolor=lightgreen shape=circle]
+	x567 [label=x567 fillcolor=lightgreen shape=circle]
+	x568 [label=x568 fillcolor=lightgreen shape=circle]
+	x569 [label=x569 fillcolor=lightgreen shape=circle]
+	x570 [label=x570 fillcolor=lightgreen shape=circle]
+	x571 [label=x571 fillcolor=lightgreen shape=circle]
+	x572 [label=x572 fillcolor=lightgreen shape=circle]
+	x573 [label=x573 fillcolor=lightgreen shape=circle]
+	x574 [label=x574 fillcolor=lightgreen shape=circle]
+	x575 [label=x575 fillcolor=lightgreen shape=circle]
+	x576 [label=x576 fillcolor=lightgreen shape=circle]
+	x577 [label=x577 fillcolor=lightgreen shape=circle]
+	x578 [label=x578 fillcolor=lightgreen shape=circle]
+	x579 [label=x579 fillcolor=lightgreen shape=circle]
+	x580 [label=x580 fillcolor=lightgreen shape=circle]
+	x581 [label=x581 fillcolor=lightgreen shape=circle]
+	x582 [label=x582 fillcolor=lightgreen shape=circle]
+	x583 [label=x583 fillcolor=lightgreen shape=circle]
+	x584 [label=x584 fillcolor=lightgreen shape=circle]
+	x585 [label=x585 fillcolor=lightgreen shape=circle]
+	x586 [label=x586 fillcolor=lightgreen shape=circle]
+	x587 [label=x587 fillcolor=lightgreen shape=circle]
+	x588 [label=x588 fillcolor=lightgreen shape=circle]
+	x589 [label=x589 fillcolor=lightgreen shape=circle]
+	x590 [label=x590 fillcolor=lightgreen shape=circle]
+	x591 [label=x591 fillcolor=lightgreen shape=circle]
+	x592 [label=x592 fillcolor=lightgreen shape=circle]
+	x593 [label=x593 fillcolor=lightgreen shape=circle]
+	x594 [label=x594 fillcolor=lightgreen shape=circle]
+	x595 [label=x595 fillcolor=lightgreen shape=circle]
+	x596 [label=x596 fillcolor=lightgreen shape=circle]
+	x597 [label=x597 fillcolor=lightgreen shape=circle]
+	x598 [label=x598 fillcolor=lightgreen shape=circle]
+	x599 [label=x599 fillcolor=lightgreen shape=circle]
+	x600 [label=x600 fillcolor=lightgreen shape=circle]
+	x601 [label=x601 fillcolor=lightgreen shape=circle]
+	x602 [label=x602 fillcolor=lightgreen shape=circle]
+	x603 [label=x603 fillcolor=lightgreen shape=circle]
+	x604 [label=x604 fillcolor=lightgreen shape=circle]
+	x605 [label=x605 fillcolor=lightgreen shape=circle]
+	x606 [label=x606 fillcolor=lightgreen shape=circle]
+	x607 [label=x607 fillcolor=lightgreen shape=circle]
+	x608 [label=x608 fillcolor=lightgreen shape=circle]
+	x609 [label=x609 fillcolor=lightgreen shape=circle]
+	x610 [label=x610 fillcolor=lightgreen shape=circle]
+	x611 [label=x611 fillcolor=lightgreen shape=circle]
+	x612 [label=x612 fillcolor=lightgreen shape=circle]
+	x613 [label=x613 fillcolor=lightgreen shape=circle]
+	x614 [label=x614 fillcolor=lightgreen shape=circle]
+	x615 [label=x615 fillcolor=lightgreen shape=circle]
+	x616 [label=x616 fillcolor=lightgreen shape=circle]
+	x617 [label=x617 fillcolor=lightgreen shape=circle]
+	x618 [label=x618 fillcolor=lightgreen shape=circle]
+	x619 [label=x619 fillcolor=lightgreen shape=circle]
+	x620 [label=x620 fillcolor=lightgreen shape=circle]
+	x621 [label=x621 fillcolor=lightgreen shape=circle]
+	x622 [label=x622 fillcolor=lightgreen shape=circle]
+	x623 [label=x623 fillcolor=lightgreen shape=circle]
+	x624 [label=x624 fillcolor=lightgreen shape=circle]
+	x625 [label=x625 fillcolor=lightgreen shape=circle]
+	x626 [label=x626 fillcolor=lightgreen shape=circle]
+	x627 [label=x627 fillcolor=lightgreen shape=circle]
+	x628 [label=x628 fillcolor=lightgreen shape=circle]
+	x629 [label=x629 fillcolor=lightgreen shape=circle]
+	x630 [label=x630 fillcolor=lightgreen shape=circle]
+	x631 [label=x631 fillcolor=lightgreen shape=circle]
+	x632 [label=x632 fillcolor=lightgreen shape=circle]
+	x633 [label=x633 fillcolor=lightgreen shape=circle]
+	x634 [label=x634 fillcolor=lightgreen shape=circle]
+	x635 [label=x635 fillcolor=lightgreen shape=circle]
+	x636 [label=x636 fillcolor=lightgreen shape=circle]
+	x637 [label=x637 fillcolor=lightgreen shape=circle]
+	x638 [label=x638 fillcolor=lightgreen shape=circle]
+	x639 [label=x639 fillcolor=lightgreen shape=circle]
+	x640 [label=x640 fillcolor=lightgreen shape=circle]
+	x641 [label=x641 fillcolor=lightgreen shape=circle]
+	x642 [label=x642 fillcolor=lightgreen shape=circle]
+	x643 [label=x643 fillcolor=lightgreen shape=circle]
+	x644 [label=x644 fillcolor=lightgreen shape=circle]
+	x645 [label=x645 fillcolor=lightgreen shape=circle]
+	x646 [label=x646 fillcolor=lightgreen shape=circle]
+	x647 [label=x647 fillcolor=lightgreen shape=circle]
+	x648 [label=x648 fillcolor=lightgreen shape=circle]
+	x649 [label=x649 fillcolor=lightgreen shape=circle]
+	x650 [label=x650 fillcolor=lightgreen shape=circle]
+	x651 [label=x651 fillcolor=lightgreen shape=circle]
+	x652 [label=x652 fillcolor=lightgreen shape=circle]
+	x653 [label=x653 fillcolor=lightgreen shape=circle]
+	x654 [label=x654 fillcolor=lightgreen shape=circle]
+	x655 [label=x655 fillcolor=lightgreen shape=circle]
+	x656 [label=x656 fillcolor=lightgreen shape=circle]
+	x657 [label=x657 fillcolor=lightgreen shape=circle]
+	x658 [label=x658 fillcolor=lightgreen shape=circle]
+	x659 [label=x659 fillcolor=lightgreen shape=circle]
+	x660 [label=x660 fillcolor=lightgreen shape=circle]
+	x661 [label=x661 fillcolor=lightgreen shape=circle]
+	x662 [label=x662 fillcolor=lightgreen shape=circle]
+	x663 [label=x663 fillcolor=lightgreen shape=circle]
+	x664 [label=x664 fillcolor=lightgreen shape=circle]
+	x665 [label=x665 fillcolor=lightgreen shape=circle]
+	x666 [label=x666 fillcolor=lightgreen shape=circle]
+	x667 [label=x667 fillcolor=lightgreen shape=circle]
+	x668 [label=x668 fillcolor=lightgreen shape=circle]
+	x669 [label=x669 fillcolor=lightgreen shape=circle]
+	x670 [label=x670 fillcolor=lightgreen shape=circle]
+	x671 [label=x671 fillcolor=lightgreen shape=circle]
+	x672 [label=x672 fillcolor=lightgreen shape=circle]
+	x673 [label=x673 fillcolor=lightgreen shape=circle]
+	x674 [label=x674 fillcolor=lightgreen shape=circle]
+	x675 [label=x675 fillcolor=lightgreen shape=circle]
+	x676 [label=x676 fillcolor=lightgreen shape=circle]
+	x677 [label=x677 fillcolor=lightgreen shape=circle]
+	x678 [label=x678 fillcolor=lightgreen shape=circle]
+	x679 [label=x679 fillcolor=lightgreen shape=circle]
+	x680 [label=x680 fillcolor=lightgreen shape=circle]
+	x681 [label=x681 fillcolor=lightgreen shape=circle]
+	x682 [label=x682 fillcolor=lightgreen shape=circle]
+	x683 [label=x683 fillcolor=lightgreen shape=circle]
+	x684 [label=x684 fillcolor=lightgreen shape=circle]
+	x685 [label=x685 fillcolor=lightgreen shape=circle]
+	x686 [label=x686 fillcolor=lightgreen shape=circle]
+	x687 [label=x687 fillcolor=lightgreen shape=circle]
+	x688 [label=x688 fillcolor=lightgreen shape=circle]
+	x689 [label=x689 fillcolor=lightgreen shape=circle]
+	x690 [label=x690 fillcolor=lightgreen shape=circle]
+	x691 [label=x691 fillcolor=lightgreen shape=circle]
+	x692 [label=x692 fillcolor=lightgreen shape=circle]
+	x693 [label=x693 fillcolor=lightgreen shape=circle]
+	x694 [label=x694 fillcolor=lightgreen shape=circle]
+	x695 [label=x695 fillcolor=lightgreen shape=circle]
+	x696 [label=x696 fillcolor=lightgreen shape=circle]
+	x697 [label=x697 fillcolor=lightgreen shape=circle]
+	x698 [label=x698 fillcolor=lightgreen shape=circle]
+	x699 [label=x699 fillcolor=lightgreen shape=circle]
+	x700 [label=x700 fillcolor=lightgreen shape=circle]
+	x701 [label=x701 fillcolor=lightgreen shape=circle]
+	x702 [label=x702 fillcolor=lightgreen shape=circle]
+	x703 [label=x703 fillcolor=lightgreen shape=circle]
+	x704 [label=x704 fillcolor=lightgreen shape=circle]
+	x705 [label=x705 fillcolor=lightgreen shape=circle]
+	x706 [label=x706 fillcolor=lightgreen shape=circle]
+	x707 [label=x707 fillcolor=lightgreen shape=circle]
+	x708 [label=x708 fillcolor=lightgreen shape=circle]
+	x709 [label=x709 fillcolor=lightgreen shape=circle]
+	x710 [label=x710 fillcolor=lightgreen shape=circle]
+	x711 [label=x711 fillcolor=lightgreen shape=circle]
+	x712 [label=x712 fillcolor=lightgreen shape=circle]
+	x713 [label=x713 fillcolor=lightgreen shape=circle]
+	x714 [label=x714 fillcolor=lightgreen shape=circle]
+	x715 [label=x715 fillcolor=lightgreen shape=circle]
+	x716 [label=x716 fillcolor=lightgreen shape=circle]
+	x717 [label=x717 fillcolor=lightgreen shape=circle]
+	x718 [label=x718 fillcolor=lightgreen shape=circle]
+	x719 [label=x719 fillcolor=lightgreen shape=circle]
+	x720 [label=x720 fillcolor=lightgreen shape=circle]
+	x721 [label=x721 fillcolor=lightgreen shape=circle]
+	x722 [label=x722 fillcolor=lightgreen shape=circle]
+	x723 [label=x723 fillcolor=lightgreen shape=circle]
+	x724 [label=x724 fillcolor=lightgreen shape=circle]
+	x725 [label=x725 fillcolor=lightgreen shape=circle]
+	x726 [label=x726 fillcolor=lightgreen shape=circle]
+	x727 [label=x727 fillcolor=lightgreen shape=circle]
+	x728 [label=x728 fillcolor=lightgreen shape=circle]
+	x729 [label=x729 fillcolor=lightgreen shape=circle]
+	x730 [label=x730 fillcolor=lightgreen shape=circle]
+	x731 [label=x731 fillcolor=lightgreen shape=circle]
+	x732 [label=x732 fillcolor=lightgreen shape=circle]
+	x733 [label=x733 fillcolor=lightgreen shape=circle]
+	x734 [label=x734 fillcolor=lightgreen shape=circle]
+	x735 [label=x735 fillcolor=lightgreen shape=circle]
+	x736 [label=x736 fillcolor=lightgreen shape=circle]
+	x737 [label=x737 fillcolor=lightgreen shape=circle]
+	x738 [label=x738 fillcolor=lightgreen shape=circle]
+	x739 [label=x739 fillcolor=lightgreen shape=circle]
+	x740 [label=x740 fillcolor=lightgreen shape=circle]
+	x741 [label=x741 fillcolor=lightgreen shape=circle]
+	x742 [label=x742 fillcolor=lightgreen shape=circle]
+	x743 [label=x743 fillcolor=lightgreen shape=circle]
+	x744 [label=x744 fillcolor=lightgreen shape=circle]
+	x745 [label=x745 fillcolor=lightgreen shape=circle]
+	x746 [label=x746 fillcolor=lightgreen shape=circle]
+	x747 [label=x747 fillcolor=lightgreen shape=circle]
+	x748 [label=x748 fillcolor=lightgreen shape=circle]
+	x749 [label=x749 fillcolor=lightgreen shape=circle]
+	x750 [label=x750 fillcolor=lightgreen shape=circle]
+	x751 [label=x751 fillcolor=lightgreen shape=circle]
+	x752 [label=x752 fillcolor=lightgreen shape=circle]
+	x753 [label=x753 fillcolor=lightgreen shape=circle]
+	x754 [label=x754 fillcolor=lightgreen shape=circle]
+	x755 [label=x755 fillcolor=lightgreen shape=circle]
+	x756 [label=x756 fillcolor=lightgreen shape=circle]
+	x757 [label=x757 fillcolor=lightgreen shape=circle]
+	x758 [label=x758 fillcolor=lightgreen shape=circle]
+	x759 [label=x759 fillcolor=lightgreen shape=circle]
+	x760 [label=x760 fillcolor=lightgreen shape=circle]
+	x761 [label=x761 fillcolor=lightgreen shape=circle]
+	x762 [label=x762 fillcolor=lightgreen shape=circle]
+	x763 [label=x763 fillcolor=lightgreen shape=circle]
+	x764 [label=x764 fillcolor=lightgreen shape=circle]
+	x765 [label=x765 fillcolor=lightgreen shape=circle]
+	x766 [label=x766 fillcolor=lightgreen shape=circle]
+	x767 [label=x767 fillcolor=lightgreen shape=circle]
+	x768 [label=x768 fillcolor=lightgreen shape=circle]
+	x769 [label=x769 fillcolor=lightgreen shape=circle]
+	x770 [label=x770 fillcolor=lightgreen shape=circle]
+	x771 [label=x771 fillcolor=lightgreen shape=circle]
+	x772 [label=x772 fillcolor=lightgreen shape=circle]
+	x773 [label=x773 fillcolor=lightgreen shape=circle]
+	x774 [label=x774 fillcolor=lightgreen shape=circle]
+	x775 [label=x775 fillcolor=lightgreen shape=circle]
+	x776 [label=x776 fillcolor=lightgreen shape=circle]
+	x777 [label=x777 fillcolor=lightgreen shape=circle]
+	x778 [label=x778 fillcolor=lightgreen shape=circle]
+	x779 [label=x779 fillcolor=lightgreen shape=circle]
+	x780 [label=x780 fillcolor=lightgreen shape=circle]
+	x781 [label=x781 fillcolor=lightgreen shape=circle]
+	x782 [label=x782 fillcolor=lightgreen shape=circle]
+	x783 [label=x783 fillcolor=lightgreen shape=circle]
+	l0_n0 [label=l0_n0 shape=circle]
+	l0_n1 [label=l0_n1 shape=circle]
+	x0 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x0 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x1 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x1 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x2 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x2 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x3 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x3 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x4 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x4 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x5 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x5 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x6 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x6 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x7 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x7 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x8 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x8 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x9 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x9 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x10 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x10 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x11 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x11 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x12 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x12 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x13 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x13 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x14 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x14 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x15 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x15 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x16 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x16 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x17 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x17 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x18 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x18 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x19 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x19 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x20 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x20 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x21 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x21 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x22 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x22 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x23 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x23 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x24 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x24 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x25 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x25 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x26 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x26 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x27 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x27 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x28 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x28 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x29 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x29 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x30 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x30 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x31 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x31 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x32 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x32 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x33 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x33 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x34 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x34 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x35 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x35 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x36 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x36 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x37 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x37 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x38 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x38 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x39 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x39 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x40 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x40 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x41 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x41 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x42 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x42 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x43 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x43 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x44 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x44 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x45 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x45 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x46 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x46 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x47 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x47 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x48 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x48 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x49 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x49 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x50 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x50 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x51 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x51 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x52 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x52 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x53 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x53 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x54 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x54 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x55 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x55 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x56 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x56 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x57 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x57 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x58 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x58 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x59 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x59 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x60 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x60 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x61 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x61 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x62 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x62 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x63 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x63 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x64 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x64 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x65 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x65 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x66 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x66 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x67 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x67 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x68 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x68 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x69 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x69 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x70 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x70 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x71 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x71 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x72 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x72 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x73 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x73 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x74 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x74 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x75 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x75 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x76 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x76 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x77 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x77 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x78 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x78 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x79 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x79 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x80 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x80 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x81 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x81 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x82 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x82 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x83 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x83 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x84 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x84 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x85 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x85 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x86 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x86 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x87 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x87 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x88 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x88 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x89 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x89 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x90 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x90 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x91 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x91 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x92 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x92 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x93 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x93 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x94 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x94 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x95 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x95 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x96 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x96 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x97 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x97 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x98 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x98 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x99 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x99 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x100 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x100 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x101 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x101 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x102 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x102 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x103 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x103 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x104 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x104 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x105 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x105 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x106 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x106 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x107 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x107 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x108 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x108 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x109 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x109 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x110 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x110 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x111 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x111 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x112 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x112 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x113 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x113 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x114 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x114 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x115 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x115 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x116 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x116 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x117 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x117 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x118 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x118 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x119 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x119 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x120 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x120 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x121 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x121 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x122 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x122 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x123 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x123 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x124 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x124 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x125 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x125 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x126 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x126 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x127 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x127 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x128 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x128 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x129 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x129 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x130 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x130 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x131 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x131 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x132 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x132 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x133 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x133 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x134 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x134 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x135 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x135 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x136 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x136 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x137 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x137 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x138 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x138 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x139 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x139 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x140 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x140 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x141 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x141 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x142 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x142 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x143 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x143 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x144 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x144 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x145 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x145 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x146 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x146 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x147 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x147 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x148 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x148 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x149 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x149 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x150 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x150 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x151 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x151 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x152 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x152 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x153 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x153 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x154 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x154 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x155 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x155 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x156 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x156 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x157 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x157 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x158 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x158 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x159 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x159 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x160 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x160 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x161 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x161 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x162 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x162 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x163 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x163 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x164 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x164 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x165 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x165 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x166 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x166 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x167 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x167 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x168 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x168 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x169 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x169 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x170 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x170 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x171 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x171 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x172 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x172 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x173 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x173 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x174 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x174 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x175 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x175 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x176 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x176 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x177 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x177 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x178 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x178 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x179 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x179 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x180 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x180 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x181 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x181 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x182 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x182 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x183 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x183 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x184 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x184 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x185 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x185 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x186 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x186 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x187 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x187 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x188 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x188 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x189 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x189 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x190 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x190 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x191 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x191 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x192 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x192 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x193 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x193 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x194 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x194 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x195 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x195 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x196 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x196 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x197 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x197 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x198 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x198 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x199 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x199 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x200 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x200 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x201 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x201 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x202 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x202 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x203 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x203 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x204 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x204 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x205 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x205 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x206 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x206 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x207 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x207 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x208 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x208 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x209 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x209 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x210 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x210 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x211 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x211 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x212 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x212 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x213 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x213 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x214 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x214 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x215 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x215 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x216 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x216 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x217 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x217 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x218 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x218 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x219 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x219 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x220 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x220 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x221 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x221 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x222 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x222 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x223 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x223 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x224 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x224 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x225 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x225 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x226 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x226 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x227 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x227 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x228 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x228 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x229 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x229 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x230 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x230 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x231 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x231 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x232 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x232 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x233 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x233 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x234 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x234 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x235 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x235 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x236 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x236 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x237 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x237 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x238 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x238 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x239 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x239 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x240 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x240 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x241 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x241 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x242 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x242 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x243 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x243 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x244 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x244 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x245 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x245 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x246 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x246 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x247 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x247 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x248 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x248 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x249 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x249 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x250 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x250 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x251 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x251 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x252 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x252 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x253 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x253 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x254 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x254 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x255 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x255 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x256 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x256 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x257 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x257 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x258 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x258 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x259 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x259 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x260 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x260 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x261 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x261 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x262 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x262 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x263 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x263 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x264 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x264 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x265 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x265 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x266 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x266 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x267 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x267 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x268 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x268 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x269 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x269 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x270 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x270 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x271 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x271 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x272 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x272 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x273 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x273 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x274 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x274 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x275 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x275 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x276 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x276 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x277 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x277 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x278 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x278 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x279 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x279 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x280 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x280 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x281 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x281 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x282 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x282 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x283 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x283 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x284 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x284 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x285 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x285 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x286 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x286 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x287 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x287 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x288 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x288 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x289 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x289 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x290 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x290 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x291 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x291 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x292 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x292 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x293 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x293 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x294 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x294 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x295 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x295 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x296 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x296 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x297 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x297 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x298 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x298 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x299 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x299 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x300 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x300 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x301 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x301 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x302 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x302 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x303 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x303 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x304 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x304 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x305 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x305 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x306 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x306 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x307 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x307 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x308 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x308 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x309 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x309 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x310 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x310 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x311 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x311 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x312 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x312 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x313 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x313 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x314 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x314 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x315 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x315 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x316 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x316 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x317 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x317 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x318 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x318 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x319 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x319 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x320 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x320 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x321 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x321 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x322 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x322 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x323 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x323 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x324 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x324 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x325 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x325 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x326 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x326 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x327 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x327 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x328 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x328 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x329 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x329 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x330 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x330 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x331 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x331 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x332 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x332 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x333 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x333 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x334 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x334 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x335 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x335 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x336 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x336 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x337 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x337 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x338 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x338 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x339 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x339 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x340 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x340 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x341 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x341 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x342 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x342 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x343 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x343 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x344 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x344 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x345 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x345 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x346 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x346 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x347 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x347 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x348 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x348 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x349 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x349 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x350 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x350 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x351 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x351 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x352 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x352 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x353 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x353 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x354 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x354 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x355 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x355 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x356 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x356 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x357 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x357 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x358 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x358 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x359 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x359 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x360 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x360 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x361 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x361 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x362 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x362 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x363 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x363 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x364 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x364 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x365 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x365 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x366 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x366 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x367 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x367 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x368 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x368 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x369 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x369 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x370 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x370 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x371 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x371 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x372 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x372 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x373 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x373 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x374 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x374 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x375 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x375 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x376 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x376 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x377 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x377 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x378 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x378 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x379 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x379 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x380 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x380 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x381 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x381 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x382 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x382 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x383 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x383 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x384 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x384 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x385 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x385 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x386 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x386 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x387 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x387 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x388 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x388 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x389 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x389 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x390 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x390 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x391 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x391 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x392 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x392 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x393 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x393 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x394 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x394 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x395 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x395 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x396 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x396 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x397 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x397 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x398 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x398 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x399 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x399 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x400 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x400 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x401 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x401 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x402 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x402 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x403 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x403 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x404 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x404 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x405 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x405 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x406 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x406 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x407 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x407 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x408 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x408 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x409 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x409 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x410 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x410 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x411 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x411 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x412 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x412 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x413 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x413 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x414 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x414 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x415 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x415 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x416 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x416 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x417 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x417 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x418 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x418 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x419 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x419 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x420 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x420 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x421 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x421 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x422 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x422 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x423 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x423 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x424 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x424 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x425 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x425 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x426 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x426 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x427 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x427 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x428 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x428 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x429 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x429 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x430 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x430 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x431 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x431 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x432 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x432 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x433 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x433 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x434 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x434 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x435 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x435 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x436 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x436 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x437 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x437 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x438 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x438 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x439 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x439 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x440 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x440 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x441 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x441 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x442 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x442 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x443 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x443 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x444 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x444 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x445 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x445 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x446 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x446 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x447 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x447 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x448 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x448 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x449 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x449 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x450 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x450 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x451 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x451 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x452 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x452 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x453 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x453 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x454 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x454 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x455 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x455 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x456 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x456 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x457 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x457 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x458 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x458 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x459 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x459 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x460 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x460 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x461 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x461 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x462 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x462 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x463 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x463 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x464 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x464 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x465 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x465 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x466 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x466 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x467 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x467 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x468 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x468 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x469 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x469 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x470 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x470 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x471 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x471 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x472 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x472 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x473 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x473 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x474 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x474 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x475 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x475 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x476 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x476 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x477 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x477 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x478 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x478 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x479 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x479 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x480 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x480 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x481 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x481 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x482 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x482 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x483 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x483 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x484 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x484 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x485 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x485 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x486 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x486 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x487 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x487 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x488 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x488 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x489 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x489 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x490 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x490 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x491 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x491 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x492 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x492 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x493 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x493 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x494 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x494 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x495 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x495 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x496 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x496 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x497 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x497 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x498 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x498 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x499 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x499 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x500 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x500 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x501 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x501 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x502 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x502 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x503 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x503 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x504 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x504 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x505 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x505 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x506 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x506 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x507 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x507 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x508 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x508 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x509 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x509 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x510 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x510 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x511 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x511 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x512 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x512 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x513 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x513 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x514 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x514 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x515 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x515 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x516 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x516 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x517 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x517 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x518 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x518 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x519 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x519 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x520 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x520 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x521 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x521 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x522 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x522 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x523 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x523 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x524 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x524 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x525 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x525 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x526 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x526 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x527 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x527 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x528 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x528 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x529 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x529 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x530 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x530 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x531 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x531 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x532 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x532 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x533 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x533 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x534 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x534 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x535 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x535 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x536 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x536 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x537 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x537 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x538 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x538 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x539 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x539 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x540 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x540 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x541 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x541 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x542 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x542 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x543 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x543 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x544 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x544 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x545 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x545 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x546 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x546 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x547 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x547 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x548 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x548 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x549 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x549 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x550 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x550 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x551 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x551 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x552 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x552 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x553 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x553 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x554 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x554 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x555 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x555 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x556 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x556 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x557 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x557 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x558 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x558 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x559 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x559 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x560 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x560 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x561 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x561 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x562 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x562 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x563 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x563 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x564 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x564 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x565 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x565 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x566 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x566 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x567 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x567 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x568 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x568 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x569 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x569 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x570 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x570 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x571 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x571 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x572 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x572 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x573 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x573 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x574 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x574 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x575 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x575 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x576 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x576 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x577 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x577 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x578 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x578 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x579 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x579 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x580 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x580 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x581 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x581 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x582 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x582 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x583 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x583 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x584 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x584 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x585 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x585 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x586 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x586 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x587 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x587 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x588 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x588 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x589 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x589 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x590 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x590 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x591 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x591 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x592 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x592 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x593 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x593 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x594 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x594 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x595 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x595 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x596 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x596 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x597 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x597 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x598 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x598 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x599 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x599 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x600 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x600 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x601 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x601 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x602 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x602 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x603 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x603 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x604 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x604 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x605 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x605 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x606 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x606 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x607 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x607 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x608 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x608 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x609 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x609 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x610 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x610 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x611 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x611 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x612 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x612 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x613 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x613 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x614 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x614 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x615 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x615 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x616 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x616 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x617 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x617 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x618 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x618 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x619 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x619 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x620 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x620 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x621 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x621 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x622 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x622 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x623 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x623 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x624 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x624 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x625 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x625 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x626 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x626 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x627 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x627 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x628 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x628 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x629 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x629 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x630 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x630 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x631 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x631 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x632 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x632 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x633 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x633 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x634 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x634 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x635 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x635 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x636 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x636 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x637 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x637 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x638 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x638 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x639 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x639 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x640 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x640 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x641 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x641 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x642 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x642 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x643 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x643 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x644 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x644 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x645 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x645 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x646 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x646 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x647 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x647 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x648 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x648 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x649 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x649 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x650 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x650 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x651 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x651 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x652 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x652 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x653 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x653 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x654 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x654 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x655 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x655 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x656 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x656 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x657 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x657 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x658 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x658 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x659 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x659 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x660 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x660 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x661 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x661 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x662 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x662 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x663 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x663 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x664 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x664 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x665 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x665 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x666 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x666 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x667 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x667 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x668 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x668 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x669 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x669 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x670 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x670 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x671 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x671 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x672 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x672 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x673 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x673 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x674 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x674 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x675 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x675 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x676 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x676 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x677 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x677 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x678 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x678 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x679 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x679 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x680 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x680 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x681 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x681 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x682 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x682 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x683 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x683 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x684 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x684 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x685 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x685 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x686 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x686 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x687 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x687 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x688 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x688 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x689 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x689 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x690 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x690 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x691 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x691 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x692 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x692 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x693 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x693 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x694 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x694 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x695 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x695 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x696 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x696 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x697 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x697 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x698 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x698 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x699 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x699 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x700 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x700 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x701 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x701 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x702 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x702 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x703 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x703 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x704 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x704 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x705 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x705 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x706 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x706 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x707 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x707 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x708 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x708 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x709 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x709 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x710 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x710 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x711 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x711 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x712 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x712 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x713 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x713 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x714 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x714 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x715 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x715 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x716 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x716 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x717 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x717 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x718 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x718 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x719 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x719 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x720 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x720 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x721 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x721 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x722 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x722 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x723 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x723 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x724 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x724 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x725 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x725 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x726 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x726 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x727 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x727 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x728 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x728 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x729 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x729 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x730 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x730 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x731 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x731 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x732 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x732 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x733 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x733 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x734 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x734 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x735 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x735 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x736 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x736 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x737 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x737 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x738 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x738 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x739 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x739 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x740 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x740 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x741 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x741 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x742 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x742 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x743 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x743 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x744 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x744 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x745 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x745 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x746 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x746 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x747 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x747 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x748 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x748 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x749 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x749 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x750 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x750 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x751 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x751 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x752 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x752 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x753 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x753 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x754 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x754 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x755 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x755 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x756 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x756 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x757 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x757 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x758 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x758 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x759 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x759 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x760 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x760 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x761 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x761 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x762 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x762 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x763 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x763 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x764 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x764 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x765 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x765 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x766 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x766 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x767 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x767 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x768 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x768 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x769 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x769 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x770 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x770 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x771 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x771 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x772 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x772 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x773 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x773 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x774 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x774 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x775 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x775 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x776 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x776 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x777 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x777 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x778 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x778 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x779 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x779 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x780 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x780 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x781 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x781 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x782 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x782 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x783 -> l0_n0 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	x783 -> l0_n1 [label="w: 0.00
+b: 0.00" color=red0 fontsize=10]
+	l1_n0 [label=l1_n0 shape=circle]
+	l1_n1 [label=l1_n1 shape=circle]
+	l0_n0 -> l1_n0 [label="w: -0.04
+b: 0.00" color=red0 fontsize=10]
+	l0_n0 -> l1_n1 [label="w: 0.26
+b: 0.00" color=green1 fontsize=10]
+	l0_n1 -> l1_n0 [label="w: -0.34
+b: 0.00" color=red1 fontsize=10]
+	l0_n1 -> l1_n1 [label="w: 0.42
+b: 0.00" color=green1 fontsize=10]
+	l2_n0 [label=l2_n0 shape=circle]
+	l2_n1 [label=l2_n1 shape=circle]
+	l1_n0 -> l2_n0 [label="w: -0.06
+b: 0.20" color=red0 fontsize=10]
+	l1_n0 -> l2_n1 [label="w: -0.10
+b: 0.09" color=red0 fontsize=10]
+	l1_n1 -> l2_n0 [label="w: -0.02
+b: 0.20" color=red0 fontsize=10]
+	l1_n1 -> l2_n1 [label="w: 0.01
+b: 0.09" color=green0 fontsize=10]
+	l3_n0 [label=l3_n0 shape=circle]
+	l3_n1 [label=l3_n1 shape=circle]
+	l2_n0 -> l3_n0 [label="w: -0.86
+b: -0.15" color=red3 fontsize=10]
+	l2_n0 -> l3_n1 [label="w: 1.76
+b: 0.04" color=green4 fontsize=10]
+	l2_n1 -> l3_n0 [label="w: -0.82
+b: -0.15" color=red3 fontsize=10]
+	l2_n1 -> l3_n1 [label="w: -0.69
+b: 0.04" color=red2 fontsize=10]
+	l4_n0 [label=l4_n0 shape=circle]
+	l4_n1 [label=l4_n1 shape=circle]
+	l3_n0 -> l4_n0 [label="w: -1.01
+b: -0.00" color=red4 fontsize=10]
+	l3_n0 -> l4_n1 [label="w: 0.71
+b: -0.21" color=green2 fontsize=10]
+	l3_n1 -> l4_n0 [label="w: -1.22
+b: -0.00" color=red4 fontsize=10]
+	l3_n1 -> l4_n1 [label="w: -0.19
+b: -0.21" color=red0 fontsize=10]
+	l5_n0 [label=l5_n0 shape=circle]
+	l5_n1 [label=l5_n1 shape=circle]
+	l4_n0 -> l5_n0 [label="w: -0.59
+b: -0.25" color=red2 fontsize=10]
+	l4_n0 -> l5_n1 [label="w: 0.83
+b: -0.34" color=green3 fontsize=10]
+	l4_n1 -> l5_n0 [label="w: 0.18
+b: -0.25" color=green0 fontsize=10]
+	l4_n1 -> l5_n1 [label="w: 0.71
+b: -0.34" color=green2 fontsize=10]
+	l6_n0 [label=l6_n0 shape=circle]
+	l6_n1 [label=l6_n1 shape=circle]
+	l6_n2 [label=l6_n2 shape=circle]
+	l6_n3 [label=l6_n3 shape=circle]
+	l6_n4 [label=l6_n4 shape=circle]
+	l6_n5 [label=l6_n5 shape=circle]
+	l6_n6 [label=l6_n6 shape=circle]
+	l6_n7 [label=l6_n7 shape=circle]
+	l6_n8 [label=l6_n8 shape=circle]
+	l6_n9 [label=l6_n9 shape=circle]
+	l5_n0 -> l6_n0 [label="w: -0.52
+b: -2.23" color=red2 fontsize=10]
+	l5_n0 -> l6_n1 [label="w: -0.94
+b: -1.93" color=red3 fontsize=10]
+	l5_n0 -> l6_n2 [label="w: -0.92
+b: -2.40" color=red3 fontsize=10]
+	l5_n0 -> l6_n3 [label="w: 1.46
+b: -2.39" color=green4 fontsize=10]
+	l5_n0 -> l6_n4 [label="w: 1.11
+b: -2.53" color=green4 fontsize=10]
+	l5_n0 -> l6_n5 [label="w: 1.29
+b: -2.31" color=green4 fontsize=10]
+	l5_n0 -> l6_n6 [label="w: 1.38
+b: -2.00" color=green4 fontsize=10]
+	l5_n0 -> l6_n7 [label="w: 0.53
+b: -2.01" color=green2 fontsize=10]
+	l5_n0 -> l6_n8 [label="w: -0.16
+b: -1.99" color=red0 fontsize=10]
+	l5_n0 -> l6_n9 [label="w: 1.15
+b: -2.33" color=green4 fontsize=10]
+	l5_n1 -> l6_n0 [label="w: 0.42
+b: -2.23" color=green1 fontsize=10]
+	l5_n1 -> l6_n1 [label="w: 0.87
+b: -1.93" color=green3 fontsize=10]
+	l5_n1 -> l6_n2 [label="w: -0.87
+b: -2.40" color=red3 fontsize=10]
+	l5_n1 -> l6_n3 [label="w: 0.42
+b: -2.39" color=green1 fontsize=10]
+	l5_n1 -> l6_n4 [label="w: 1.55
+b: -2.53" color=green4 fontsize=10]
+	l5_n1 -> l6_n5 [label="w: 1.17
+b: -2.31" color=green4 fontsize=10]
+	l5_n1 -> l6_n6 [label="w: 0.65
+b: -2.00" color=green2 fontsize=10]
+	l5_n1 -> l6_n7 [label="w: -1.40
+b: -2.01" color=red4 fontsize=10]
+	l5_n1 -> l6_n8 [label="w: 1.45
+b: -1.99" color=green4 fontsize=10]
+	l5_n1 -> l6_n9 [label="w: 0.85
+b: -2.33" color=green3 fontsize=10]
 }
