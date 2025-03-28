@@ -32,7 +32,6 @@ repository/
 │   │   ├── layer.py        # Implementasi kelas Layer
 │   │   ├── varValue.py     # Fungsi utilitas tambahan
 │   │   └── notebook.ipynb  # Notebook untuk pengujian model
-│
 │   ├── basic
 │   │   ├── ANN_basic.ipynb # Notebook untuk pengujian model
 ├── doc/
