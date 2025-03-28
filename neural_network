@@ -1,0 +1,95 @@
+// Neural Network Architecture
+digraph {
+	node [fontsize=10 shape=circle style=filled]
+	subgraph cluster_layer_0 {
+		color=lightgrey label="Layer 0" style=filled
+		L0_N0 [label="Layer 0
+Neuron 0
+softmax" fillcolor=yellow]
+		L0_N1 [label="Layer 0
+Neuron 1
+softmax" fillcolor=yellow]
+		L0_N2 [label="Layer 0
+Neuron 2
+softmax" fillcolor=yellow]
+		L0_N3 [label="Layer 0
+Neuron 3
+softmax" fillcolor=yellow]
+	}
+	subgraph cluster_layer_1 {
+		color=lightgrey label="Layer 1" style=filled
+		L1_N0 [label="Layer 1
+Neuron 0
+softmax" fillcolor=lightblue]
+		L1_N1 [label="Layer 1
+Neuron 1
+softmax" fillcolor=lightblue]
+		L1_N2 [label="Layer 1
+Neuron 2
+softmax" fillcolor=lightblue]
+	}
+	subgraph cluster_layer_2 {
+		color=lightgrey label="Layer 2" style=filled
+		L2_N0 [label="Layer 2
+Neuron 0
+softmax" fillcolor=lightblue]
+		L2_N1 [label="Layer 2
+Neuron 1
+softmax" fillcolor=lightblue]
+	}
+	subgraph cluster_layer_3 {
+		color=lightgrey label="Layer 3" style=filled
+		L3_N0 [label="Layer 3
+Neuron 0
+softmax" fillcolor=salmon]
+		L3_N1 [label="Layer 3
+Neuron 1
+softmax" fillcolor=salmon]
+		L3_N2 [label="Layer 3
+Neuron 2
+softmax" fillcolor=salmon]
+		L3_N3 [label="Layer 3
+Neuron 3
+softmax" fillcolor=salmon]
+		L3_N4 [label="Layer 3
+Neuron 4
+softmax" fillcolor=salmon]
+		L3_N5 [label="Layer 3
+Neuron 5
+softmax" fillcolor=salmon]
+		L3_N6 [label="Layer 3
+Neuron 6
+softmax" fillcolor=salmon]
+		L3_N7 [label="Layer 3
+Neuron 7
+softmax" fillcolor=salmon]
+		L3_N8 [label="Layer 3
+Neuron 8
+softmax" fillcolor=salmon]
+		L3_N9 [label="Layer 3
+Neuron 9
+softmax" fillcolor=salmon]
+	}
+	L0_N0 -> L1_N0 [label=-0.0080 color=red penwidth=0.016]
+	L0_N0 -> L1_N1 [label=0.0074 color=blue penwidth=0.0148]
+	L0_N0 -> L1_N2 [label=-0.0286 color=red penwidth=0.0572]
+	L0_N1 -> L1_N0 [label=0.0122 color=blue penwidth=0.0244]
+	L0_N1 -> L1_N1 [label=0.0026 color=blue penwidth=0.0052]
+	L0_N1 -> L1_N2 [label=0.0316 color=blue penwidth=0.0632]
+	L0_N2 -> L1_N0 [label=0.0141 color=blue penwidth=0.0282]
+	L0_N2 -> L1_N1 [label=0.0060 color=blue penwidth=0.012]
+	L0_N2 -> L1_N2 [label=-0.0217 color=red penwidth=0.0434]
+	L0_N3 -> L1_N0 [label=-0.0053 color=red penwidth=0.0106]
+	L0_N3 -> L1_N1 [label=0.0064 color=blue penwidth=0.0128]
+	L0_N3 -> L1_N2 [label=0.0205 color=blue penwidth=0.041]
+	L1_N0 -> L2_N0 [label=-0.2641 color=red penwidth=0.5281493594585468]
+	L1_N0 -> L2_N1 [label=0.1319 color=blue penwidth=0.26384693722487945]
+	L1_N1 -> L2_N0 [label=0.2496 color=blue penwidth=0.4991521561531887]
+	L1_N1 -> L2_N1 [label=-0.1862 color=red penwidth=0.37249437284159653]
+	L1_N2 -> L2_N0 [label=0.3710 color=blue penwidth=0.7420794112309037]
+	L1_N2 -> L2_N1 [label=-0.2063 color=red penwidth=0.41255814765751886]
+	L2_N0 -> L3_N0 [label=-0.4008 color=red penwidth=0.801694010745874]
+	L2_N0 -> L3_N1 [label=0.0778 color=blue penwidth=0.15557443301746837]
+	L2_N1 -> L3_N0 [label=-0.3392 color=red penwidth=0.6784498763778394]
+	L2_N1 -> L3_N1 [label=-0.4304 color=red penwidth=0.8608663726147123]
+}
