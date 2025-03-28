@@ -1,367 +1,347 @@
-import numpy as np
+import sys  
+import time  
+import math  
+import uuid  
+import numpy as np  
+import matplotlib.pyplot as plt
 import pickle
+import plotly.graph_objs as go
+from numpy import errstate  
+from sklearn.preprocessing import OneHotEncoder  
 from tqdm import tqdm
 
-# Import custom modules
-from activation_functions import apply_activation, apply_activation_derivative, sigmoid
-from loss_functions import get_loss_function, get_loss_derivative
-import visualization as vis
+sys.setrecursionlimit(10000)
+
+from varValue import VarValue
+from layer import Layer
 
 class FFNN:
-    def __init__(self, layer_sizes, activation_functions, loss_function, 
-                 weight_init_method='uniform', 
-                 lower_bound=-0.1, upper_bound=0.1,  # For uniform
-                 mean=0.0, variance=0.1,  # For normal
-                 seed=42):
-        """
-        Initialize a Feedforward Neural Network with enhanced weight initialization.
-        
-        Parameters:
-        -----------
-        layer_sizes : list
-            Number of neurons in each layer (including input and output layers)
-        activation_functions : list
-            Activation function for each layer (including input layer)
-        loss_function : str
-            Loss function to use
-        weight_init_method : str
-            Method to initialize weights 
-            Options: 'uniform', 'normal', 'zero'
-        lower_bound : float
-            Lower bound for uniform weight initialization
-        upper_bound : float
-            Upper bound for uniform weight initialization
-        mean : float
-            Mean for normal distribution weight initialization
-        variance : float
-            Variance for normal distribution weight initialization
-        seed : int
-            Random seed for reproducibility
-        """
-        self.layer_sizes = layer_sizes
-        
-        # Make sure activation_functions has the correct length
-        if len(activation_functions) != len(layer_sizes):
-            # If not enough activation functions provided, add 'linear' for input layer
-            if len(activation_functions) == len(layer_sizes) - 1:
-                activation_functions = ['linear'] + activation_functions
-            else:
-                raise ValueError(f"Expected {len(layer_sizes)} activation functions, got {len(activation_functions)}")
-        
-        self.activation_functions = activation_functions
-        self.loss_function = loss_function
-        self.weight_init_method = weight_init_method
-        self.lower_bound = lower_bound
-        self.upper_bound = upper_bound
-        self.mean = mean
-        self.variance = variance
-        self.seed = seed
-        
-        # Initialize weights and biases
-        np.random.seed(seed)
+    def __init__(self, loss='mse', batch_size=1, learning_rate=0.01, epochs=20, verbose=0):
+        self.loss = loss    # mse/bce/cce
+        self.batch_size=batch_size
+        self.learning_rate=learning_rate
+        self.epochs=epochs
+        self.verbose=verbose
+        self.layers = None
         self.weights = []
-        self.biases = []
-        self.weight_gradients = []
-        self.bias_gradients = []
+        self.bias = []
+        self.x = None
+        self.y = None
+        self.onehot_encoder = OneHotEncoder(categories='auto')
+
+    def __loss(self, out, target):
+        if out.shape != target.shape:
+            print("Output shape: ", out.shape)
+            print("Target shape: ", target.shape)
+            raise ValueError("Shape not match")
+
+        if self.loss == 'mse':
+            mse = (1/target.shape[1]) * np.square(target - out)
+            return np.sum(mse)
+
+        elif self.loss == 'bce':
+            epsilon = 1e-15
+            # loss = VarValue(0.0, varname='loss_bce')
+            loss = 0
+
+            for i in range(target.shape[0]):            # loop untuk batch
+                for j in range(target.shape[1]):        # loop untuk neuron output
+                    # target_val = VarValue(target[i, j], varname=f'target_{i}_{j}')
+
+                    # Clipping untuk mencegah log(0)
+                    out[i, j].value = np.clip(out[i, j].value, epsilon, 1 - epsilon)
+
+                    # BCE: -(y*log(p) + (1-y)*log(1-p))
+                    term1 = target * out[i, j].log()
+                    term2 = (1 - target) * (1 - out[i, j]).log()
+
+                    loss = loss + (term1 + term2)
+
+            loss = loss * (-1 / self.batch_size)
+            return loss
+
+        elif self.loss == 'cce':
+            epsilon = 1e-15
+            loss = VarValue(0.0, varname='loss_const')
+
+            for i in range(target.shape[0]):            # loop untuk batch
+                for j in range(target.shape[1]):        # loop untuk neuron output
+                    target_val = VarValue(target[i, j], varname=f'target_{i}_{j}')
+                    out[i, j].value = np.clip(out[i, j].value, epsilon, 1 - epsilon)
+                    loss = loss + (target_val * out[i, j].log())
+
+            loss = loss * (-1 / self.batch_size)
+            return loss
+
+    def build_layers(self, *layers: Layer):
+        self.layers = layers
+        for layer in self.layers:
+            layer.learning_rate = self.learning_rate
+
+    def fit(self, x, y, validation_data=None):
+        self.x = x
+        self.y = self.onehot_encoder.fit_transform(y.reshape(-1, 1)).toarray()
         
-        # Initialize weights between layers
-        for i in range(len(layer_sizes) - 1):
-            # Weight initialization based on method
-            if weight_init_method == 'uniform':
-                w = np.random.uniform(lower_bound, upper_bound, (layer_sizes[i], layer_sizes[i+1]))
-                b = np.random.uniform(lower_bound, upper_bound, (1, layer_sizes[i+1]))
-            elif weight_init_method == 'normal':
-                # Use normal distribution with specified mean and variance
-                w = np.random.normal(loc=mean, scale=np.sqrt(variance), 
-                                     size=(layer_sizes[i], layer_sizes[i+1]))
-                b = np.random.normal(loc=mean, scale=np.sqrt(variance), 
-                                     size=(1, layer_sizes[i+1]))
-            elif weight_init_method == 'zero':
-                # Initialize weights and biases to zero
-                w = np.zeros((layer_sizes[i], layer_sizes[i+1]))
-                b = np.zeros((1, layer_sizes[i+1]))
-            else:
-                raise ValueError(f"Initialization method {weight_init_method} not supported.")
-            
-            self.weights.append(w)
-            self.biases.append(b)
-            self.weight_gradients.append(np.zeros_like(w))
-            self.bias_gradients.append(np.zeros_like(b))
+        history = {'train_loss': [], 'val_loss': []}
         
-        # For storing activations and pre-activations during forward pass
-        self.activations = []
-        self.pre_activations = []
-        
-        # Training history
-        self.history = {'train_loss': [], 'val_loss': []}
-    
-    def forward(self, X):
-        """
-        Forward propagation through the network.
-        
-        Parameters:
-        -----------
-        X : numpy.ndarray
-            Input data, shape (batch_size, input_size)
-        
-        Returns:
-        --------
-        numpy.ndarray
-            Output predictions, shape (batch_size, output_size)
-        """
-        # Reset activations and pre-activations
-        self.activations = [X]  # Initial activation is just the input
-        self.pre_activations = []
-        
-        # Forward pass through each layer
-        for i in range(len(self.weights)):
-            # Compute pre-activation: z = a^(l-1) * W^(l) + b^(l)
-            z = np.dot(self.activations[-1], self.weights[i]) + self.biases[i]
-            self.pre_activations.append(z)
-            
-            # Apply activation function: a^(l) = activation(z^(l))
-            if i == len(self.weights) - 1 and self.loss_function == 'binary_cross_entropy':
-                # For the output layer with binary cross-entropy, use sigmoid
-                a = sigmoid(z)
-            else:
-                # For other layers, use the specified activation function
-                a = apply_activation(z, self.activation_functions[i+1])
-            
-            self.activations.append(a)
-        
-        return self.activations[-1]
-    
-    def backward(self, y_true):
-        """
-        Backward propagation to compute gradients.
-        
-        Parameters:
-        -----------
-        y_true : numpy.ndarray
-            True labels, shape (batch_size, output_size)
-        """
-        batch_size = y_true.shape[0]
-        
-        # Get loss derivative
-        loss_derivative = get_loss_derivative(self.loss_function)
-        
-        # Initialize delta for output layer
-        delta = loss_derivative(y_true, self.activations[-1])
-        
-        # Backpropagate through layers
-        for i in range(len(self.weights) - 1, -1, -1):
-            # Calculate gradients for current layer
-            self.weight_gradients[i] = np.dot(self.activations[i].T, delta)
-            self.bias_gradients[i] = np.sum(delta, axis=0, keepdims=True)
-            
-            # Calculate delta for previous layer (if not at input layer)
-            if i > 0:
-                delta = np.dot(delta, self.weights[i].T) * apply_activation_derivative(
-                    self.pre_activations[i-1], self.activation_functions[i]
-                )
-    
-    def update_weights(self, learning_rate):
-        """
-        Update weights and biases using computed gradients.
-        
-        Parameters:
-        -----------
-        learning_rate : float
-            Learning rate for gradient descent
-        """
-        for i in range(len(self.weights)):
-            self.weights[i] -= learning_rate * self.weight_gradients[i]
-            self.biases[i] -= learning_rate * self.bias_gradients[i]
-    
-    def fit(self, X_train, y_train, X_val=None, y_val=None, batch_size=32, learning_rate=0.01, epochs=10, verbose=1):
-        """
-        Train the neural network.
-        
-        Parameters:
-        -----------
-        X_train : numpy.ndarray
-            Training data
-        y_train : numpy.ndarray
-            Training labels
-        X_val : numpy.ndarray
-            Validation data
-        y_val : numpy.ndarray
-            Validation labels
-        batch_size : int
-            Batch size for training
-        learning_rate : float
-            Learning rate for gradient descent
-        epochs : int
-            Number of training epochs
-        verbose : int
-            Verbosity level (0: no output, 1: progress bar)
-        
-        Returns:
-        --------
-        dict
-            Training history
-        """
-        num_samples = X_train.shape[0]
-        
-        # Ensure y_train is 2D
-        if len(y_train.shape) == 1:
-            y_train = y_train.reshape(-1, 1)
-        
-        # Ensure y_val is 2D if provided
-        if X_val is not None and y_val is not None and len(y_val.shape) == 1:
-            y_val = y_val.reshape(-1, 1)
-        
-        # Get loss function
-        loss_func = get_loss_function(self.loss_function)
-        
-        # Reset history
-        self.history = {'train_loss': [], 'val_loss': []}
-        
-        for epoch in range(epochs):
-            # Shuffle training data
-            indices = np.random.permutation(num_samples)
-            X_shuffled = X_train[indices]
-            y_shuffled = y_train[indices]
-            
-            # Initialize epoch loss
-            epoch_loss = 0
-            
-            # Create progress bar if verbose
-            if verbose == 1:
-                progress_bar = tqdm(range(0, num_samples, batch_size), desc=f"Epoch {epoch+1}/{epochs}")
-            else:
-                progress_bar = range(0, num_samples, batch_size)
-            
-            # Train on mini-batches
-            for batch_start in progress_bar:
-                batch_end = min(batch_start + batch_size, num_samples)
-                X_batch = X_shuffled[batch_start:batch_end]
-                y_batch = y_shuffled[batch_start:batch_end]
-                
+        total_batch = (len(x) + self.batch_size - 1) // self.batch_size
+        start_global = time.time()
+
+        epoch_iterator = tqdm(range(self.epochs), desc="Training Progress", unit="epoch") if self.verbose else range(self.epochs)
+
+        for epoch in epoch_iterator:
+            train_loss_epoch = 0.0
+
+            batch_iterator = tqdm(range(total_batch), desc=f"Epoch {epoch + 1}", unit="batch", leave=False) if self.verbose else range(total_batch)
+
+            for i in batch_iterator:
+                x_batch = self.x[i * self.batch_size:(i + 1) * self.batch_size] if (i + 1) < total_batch else self.x[i * self.batch_size:]
+                y_batch = self.y[i * self.batch_size:(i + 1) * self.batch_size] if (i + 1) < total_batch else self.y[i * self.batch_size:]
+
                 # Forward pass
-                y_pred = self.forward(X_batch)
-                
-                # Calculate loss
-                batch_loss = loss_func(y_batch, y_pred)
-                epoch_loss += batch_loss * (batch_end - batch_start) / num_samples
-                
+                batch_input = x_batch
+                for layer in self.layers:
+                    layer.forward(batch_input)
+                    batch_input = layer.out
+                out = batch_input
+
+                # Hitung loss
+                error = self.__loss(out, y_batch)
+                train_loss_epoch += error.value if isinstance(error, VarValue) else error
+
                 # Backward pass
-                self.backward(y_batch)
-                
-                # Update weights
-                self.update_weights(learning_rate)
-                
-                # Update progress bar if verbose
-                if verbose == 1:
-                    progress_bar.set_postfix({"train_loss": f"{epoch_loss:.4f}"})
-            
-            # Append training loss to history
-            self.history['train_loss'].append(epoch_loss)
-            
-            # Calculate validation loss if validation data is provided
-            if X_val is not None and y_val is not None:
-                val_pred = self.forward(X_val)
-                val_loss = loss_func(y_val, val_pred)
-                self.history['val_loss'].append(val_loss)
-                
-                if verbose == 1:
-                    print(f"Epoch {epoch+1}/{epochs} - train_loss: {epoch_loss:.4f} - val_loss: {val_loss:.4f}")
+                for layer in reversed(self.layers):
+                    layer.backward(err=error)
+
+                for layer in self.layers:
+                    layer.clean_derivative()
+
+            # Rata-rata training loss per epoch
+            avg_train_loss = train_loss_epoch / total_batch
+            history['train_loss'].append(avg_train_loss)
+
+            # Jika ada data validasi, hitung validation loss
+            if validation_data:
+                X_val, y_val = validation_data
+                y_val_enc = self.onehot_encoder.transform(y_val.reshape(-1, 1)).toarray()
+                val_pred = self.predict(X_val)
+                val_loss = self.__loss(val_pred, y_val_enc)
+                avg_val_loss = val_loss.value if isinstance(val_loss, VarValue) else val_loss
+                history['val_loss'].append(avg_val_loss)
+
+            if self.verbose:
+                print(f"Epoch {epoch+1}/{self.epochs}, Train Loss: {avg_train_loss:.4f}", end="")
+                if validation_data:
+                    print(f", Validation Loss: {avg_val_loss:.4f}")
+                else:
+                    print()
+
+        end_global = time.time()
+        print("Total Duration:", end_global - start_global)
+
+        return history
+
+    def predict(self, x_predict):
+        batch_input = x_predict
+        for layer in self.layers:
+            layer.forward(batch_input)
+            batch_input = layer.out
+        out = batch_input
+        return out
+        
+    def visualize(self):
+        num_layers = len(self.layers)
+
+        # Warna untuk setiap layer
+        layer_colors = {
+            0: 'yellow',    # Input layer
+            -1: 'salmon',   # Output layer
+            'hidden': 'lightblue'  # Hidden layers
+        }
+
+        nodes_x, nodes_y, node_colors, node_texts = [], [], [], []
+
+        # Membuat koordinat dan informasi node
+        for layer_idx, layer in enumerate(self.layers):
+            if num_layers == 1:
+                color = layer_colors[-1]
+            elif layer_idx == 0:
+                color = layer_colors[0]
+            elif layer_idx == num_layers - 1:
+                color = layer_colors[-1]
             else:
-                if verbose == 1:
-                    print(f"Epoch {epoch+1}/{epochs} - train_loss: {epoch_loss:.4f}")
-        
-        return self.history
-    
-    def predict(self, X):
-        """
-        Make predictions with the trained model.
-        
-        Parameters:
-        -----------
-        X : numpy.ndarray
-            Input data
-        
-        Returns:
-        --------
-        numpy.ndarray
-            Predictions
-        """
-        return self.forward(X)
+                color = layer_colors['hidden']
+
+            n_neurons = layer.n_neurons
+            y_positions = np.linspace(0, 1, n_neurons)
+            x_pos = layer_idx / (num_layers - 1) if num_layers > 1 else 0.5
+
+            for neuron_idx, y_pos in enumerate(y_positions):
+                nodes_x.append(x_pos)
+                nodes_y.append(y_pos)
+                node_colors.append(color)
+
+                node_info = f"Layer {layer_idx}, Neuron {neuron_idx}<br>Activation: {layer.activation}"
+
+                # Menampilkan gradient dari bias jika tersedia
+                if layer.grad_biases is not None:
+                    node_info += f"<br>Bias Gradient: {layer.grad_biases[neuron_idx]:.4f}"
+                else:
+                    node_info += "<br>Bias Gradient: N/A"
+
+                node_texts.append(node_info)
+
+        # Membuat node scatter plot
+        node_trace = go.Scatter(
+            x=nodes_x, y=nodes_y,
+            mode='markers',
+            hoverinfo='text',
+            marker=dict(
+                showscale=False,
+                color=node_colors,
+                size=15,
+                line_width=2
+            ),
+            text=node_texts
+        )
+
+        # Membuat edge scatter plot terpisah untuk tiap koneksi (agar hoverable)
+        edge_traces = []
+
+        for layer_idx, layer in enumerate(self.layers[:-1]):
+            next_layer = self.layers[layer_idx + 1]
+            x_pos = layer_idx / (num_layers - 1)
+            next_x = (layer_idx + 1) / (num_layers - 1)
+
+            y_positions = np.linspace(0, 1, layer.n_neurons)
+            next_y_positions = np.linspace(0, 1, next_layer.n_neurons)
+
+            for curr_neuron_idx, curr_y in enumerate(y_positions):
+                for next_neuron_idx, next_y in enumerate(next_y_positions):
+
+                    # Informasi bobot dan gradient bobot
+                    weight_text = "Weight: Not initialized"
+                    gradient_text = "Gradient: N/A"
+
+                    if layer.weights is not None:
+                        try:
+                            weight = next_layer.weights[curr_neuron_idx][next_neuron_idx].value
+                            weight_text = f"Weight: {weight:.4f}"
+                        except:
+                            weight_text = "Weight: Unavailable"
+
+                    if layer.grad_weights is not None:
+                        try:
+                            gradient = next_layer.grad_weights[curr_neuron_idx][next_neuron_idx]
+                            gradient_text = f"Gradient: {gradient:.4f}"
+                        except:
+                            gradient_text = "Gradient: Unavailable"
+
+                    edge_trace = go.Scatter(
+                        x=[x_pos, next_x],
+                        y=[curr_y, next_y],
+                        mode='lines+markers',
+                        line=dict(width=0.5, color='#888'),
+                        hoverinfo='text',
+                        text=f"{weight_text}<br>{gradient_text}",
+                        marker=dict(size=10, opacity=0) # marker transparan tapi hoverable
+                    )
+
+                    edge_traces.append(edge_trace)
+
+        # Buat figure dengan nodes dan edges
+        fig = go.Figure(data=edge_traces + [node_trace],
+                        layout=go.Layout(
+                            title='Neural Network Architecture',
+                            showlegend=False,
+                            hovermode='closest',
+                            margin=dict(b=0,l=0,r=0,t=40),
+                            xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+                            yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+                            plot_bgcolor='rgba(255,255,255,255)'
+                        ))
+        fig.show()
+
+
     
     def save(self, filename):
-        """
-        Save the model to a file.
-        
-        Parameters:
-        -----------
-        filename : str
-            Filename to save the model to
-        """
         model_data = {
-            'layer_sizes': self.layer_sizes,
-            'activation_functions': self.activation_functions,
-            'loss_function': self.loss_function,
-            'weights': self.weights,
-            'biases': self.biases,
-            'weight_init_method': self.weight_init_method,
-            'lower_bound': self.lower_bound,
-            'upper_bound': self.upper_bound,
-            'seed': self.seed
+            'loss': self.loss,
+            'batch_size': self.batch_size,
+            'learning_rate': self.learning_rate,
+            'epochs': self.epochs,
+            'layers': [
+                {'n_neurons': layer.n_neurons, 'activation': layer.activation, 'weights': layer.weights.tolist(), 'biases': layer.biases.tolist()}
+                for layer in self.layers
+            ]
         }
-        
         with open(filename, 'wb') as f:
             pickle.dump(model_data, f)
-    
-    @classmethod
-    def load(cls, filename):
-        """
-        Load model from a file.
-        
-        Parameters:
-        -----------
-        filename : str
-            Filename to load the model from
-        
-        Returns:
-        --------
-        FFNN
-            Loaded model
-        """
+        print(f"Model saved to {filename}")
+
+    def load(self, filename):
         with open(filename, 'rb') as f:
             model_data = pickle.load(f)
+        self.loss = model_data['loss']
+        self.batch_size = model_data['batch_size']
+        self.learning_rate = model_data['learning_rate']
+        self.epochs = model_data['epochs']
+        self.layers = [
+            Layer(n_neurons=layer['n_neurons'], activation=layer['activation'], weights=np.array(layer['weights']), biases=np.array(layer['biases']))
+            for layer in model_data['layers']
+        ]
+        print(f"Model loaded from {filename}")
+
+    def plot_weights_distribution(self, layers_to_plot):
+        num_layers = len(layers_to_plot)
+        plt.figure(figsize=(6*num_layers, 4))
+
+        for idx, layer_idx in enumerate(layers_to_plot):
+            layer = self.layers[layer_idx]
+            weights_values = [w.value for neuron_weights in layer.weights for w in neuron_weights]
+
+            plt.subplot(1, num_layers, idx + 1)
+            plt.boxplot(weights_values, vert=True, patch_artist=True,
+                        boxprops=dict(facecolor='lightblue', color='black'),
+                        medianprops=dict(color='black'))
+            plt.title(f'Distribusi Bobot Layer {layer_idx+1}')
+            plt.ylabel('Nilai Bobot')
+            plt.xticks([])
+
+        plt.tight_layout()
+        plt.show()
+
+    def plot_gradients_distribution(self, layers_to_plot):
+        num_layers = len(layers_to_plot)
+        plt.figure(figsize=(6*num_layers, 4))
+
+        for idx, layer_idx in enumerate(layers_to_plot):
+            layer = self.layers[layer_idx]
+            gradients_values = [gw for grad_weights in layer.grad_weights for gw in grad_weights]
+
+            plt.subplot(1, num_layers, idx + 1)
+            plt.boxplot(gradients_values, vert=True, patch_artist=True,
+                        boxprops=dict(facecolor='lightpink', color='black'),
+                        medianprops=dict(color='black'))
+            plt.title(f'Distribusi Gradien Layer {layer_idx+1}')
+            plt.ylabel('Nilai Gradien')
+            plt.xticks([])
+
+        plt.tight_layout()
+        plt.show()
+
+    def plot_loss_history(self, history):
+        plt.figure(figsize=(8, 5))
+        plt.plot(history['train_loss'], label='Train Loss', marker='o')
         
-        model = cls(
-            model_data['layer_sizes'],
-            model_data['activation_functions'],
-            model_data['loss_function'],
-            model_data['weight_init_method'],
-            model_data['lower_bound'],
-            model_data['upper_bound'],
-            model_data['seed']
-        )
-        
-        model.weights = model_data['weights']
-        model.biases = model_data['biases']
-        
-        # Initialize gradients
-        model.weight_gradients = [np.zeros_like(w) for w in model.weights]
-        model.bias_gradients = [np.zeros_like(b) for b in model.biases]
-        
-        return model
-    
-    # Visualization methods that delegate to the visualization module
-    def visualize_model(self, figsize=(12, 8)):
-        """Visualize the model structure"""
-        vis.visualize_model(self, figsize)
-    
-    def plot_weight_distribution(self, layers=None, figsize=(12, 5)):
-        """Plot weight distribution"""
-        vis.plot_weight_distribution(self, layers, figsize)
-    
-    def plot_gradient_distribution(self, layers=None, figsize=(12, 5)):
-        """Plot gradient distribution"""
-        vis.plot_gradient_distribution(self, layers, figsize)
-    
-    def plot_training_history(self, figsize=(10, 6)):
-        """Plot training history"""
-        vis.plot_training_history(self.history, figsize)
+        if 'val_loss' in history and history['val_loss']:
+            plt.plot(history['val_loss'], label='Validation Loss', marker='x')
+
+        plt.title('Training and Validation Loss per Epoch')
+        plt.xlabel('Epoch')
+        plt.ylabel('Loss')
+        plt.legend()
+        plt.grid(True)
+        plt.tight_layout()
+        plt.show()
+
