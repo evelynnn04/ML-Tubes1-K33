@@ -64,7 +64,7 @@ def cce_derivative(y_true, y_pred):
     return y_pred - y_true
 
 class Layer:
-    def __init__(self, n_neurons, init='zero', activation='linear', init_params=None, weights=None, biases=None):
+    def __init__(self, n_neurons, init='zero', activation='linear', init_params=None, weights=None, biases=None, use_rmsnorm=False, rmsnorm_eps=1e-8):
         """
         Initialize a neural network layer
         
@@ -89,11 +89,18 @@ class Layer:
                 * 'mean': mean of distribution (default: 0)
                 * 'variance': variance of distribution (default: 1)
                 * 'seed': random seed (optional)
+        use_rmsnorm : bool, optional (default=False)
+            Whether to use RMSNorm normalization for this layer
+        rmsnorm_eps : float, optional (default=1e-8)
+            Small constant added to denominator in RMSNorm for numerical stability
         """
         self.n_neurons = n_neurons
         self.init = init
         self.activation = activation
         self.init_params = init_params or {}
+        self.use_rmsnorm = use_rmsnorm
+        self.rmsnorm_eps = rmsnorm_eps
+        self.rmsnorm_scale = None
         
         if self.init == 'uniform':
             self.init_params.setdefault('lower', -1)
@@ -145,6 +152,9 @@ class Layer:
                 "Available types: zero, uniform, normal, xavier_uniform, xavier_normal, he_normal, he_uniform"
             )
         
+        if self.use_rmsnorm:
+            self.rmsnorm_scale = np.ones((1, self.n_neurons))
+        
         return self
         
     def activate(self, x):
@@ -194,7 +204,7 @@ class Layer:
             )
 
 class FFNN:
-    def __init__(self, loss='mse', batch_size=32, learning_rate=0.01, epochs=100, verbose=1):
+    def __init__(self, loss='mse', batch_size=32, learning_rate=0.01, epochs=100, verbose=1, l1_lambda=0, l2_lambda=0):
         self.layers = []
         self.learning_rate = learning_rate
         self.loss = loss
@@ -207,6 +217,9 @@ class FFNN:
         self.biases = []
         self.gradient_weights = []
         self.gradient_biases = []
+        self.gradient_rmsnorm_scale = []
+        self.l1_lambda = l1_lambda
+        self.l2_lambda = l2_lambda
         
         if loss == 'mse':
             self.loss_func = mse
@@ -232,22 +245,59 @@ class FFNN:
             layer.initialize(prev_dim)
             prev_dim = layer.n_neurons
     
+    def _compute_regularization_loss(self):
+        """Calculate the regularization component of the loss"""
+        l1_reg = 0
+        l2_reg = 0
+        
+        if self.l1_lambda > 0:
+            for layer in self.layers:
+                l1_reg += np.sum(np.abs(layer.weights))
+            l1_reg *= self.l1_lambda
+            
+        if self.l2_lambda > 0:
+            for layer in self.layers:
+                l2_reg += np.sum(np.square(layer.weights))
+            l2_reg *= 0.5 * self.l2_lambda  # 0.5 is conventional for L2
+            
+        return l1_reg + l2_reg
+    
+    def _compute_total_loss(self, y, y_pred):
+        """Compute the total loss including regularization"""
+        base_loss = self.loss_func(y, y_pred)
+        reg_loss = self._compute_regularization_loss()
+        return base_loss + reg_loss
+    
     def forward(self, X):
         if X.ndim == 1:
             X = X.reshape(1, -1)
         
         activations = [X]
         zs = []
+        normalized_zs = []
         
         for layer in self.layers:
-            z = activations[-1] @ layer.weights + layer.biases # @ itu dot product
+            z = activations[-1] @ layer.weights + layer.biases # @ is dot product
+            
+            if layer.use_rmsnorm:
+                zs.append(z)
+                
+                rms = np.sqrt(np.mean(z**2, axis=1, keepdims=True) + layer.rmsnorm_eps)
+                
+                z_norm = z / rms
+                z = z_norm * layer.rmsnorm_scale
+                
+                normalized_zs.append(z_norm)
+            else:
+                zs.append(z)
+                normalized_zs.append(None)
+            
             a = layer.activate(z)
-            zs.append(z)
             activations.append(a)
             
-        return zs, activations
+        return zs, activations, normalized_zs
     
-    def backward(self, X, y, zs, activations):
+    def backward(self, X, y, zs, activations, normalized_zs):
         m = X.shape[0]
         y_pred = activations[-1]
         
@@ -255,15 +305,44 @@ class FFNN:
         self.biases = []
         self.gradient_weights = []
         self.gradient_biases = []
+        self.gradient_rmsnorm_scale = []
         
         delta = self.loss_derivative(y, y_pred)
         
         for i in reversed(range(len(self.layers))):
             z = zs[i]
             a_prev = activations[i]
+            z_norm = normalized_zs[i]
+            
+            if self.layers[i].use_rmsnorm and z_norm is not None:
+                grad_scale = np.sum(delta * z_norm, axis=0, keepdims=True) / m
+                self.gradient_rmsnorm_scale.append(grad_scale)
+                
+                rms = np.sqrt(np.mean(z**2, axis=1, keepdims=True) + self.layers[i].rmsnorm_eps)
+                
+                dim = z.shape[1]
+                delta_z = delta * self.layers[i].rmsnorm_scale 
+                grad_rms_1 = delta_z / rms
+                
+                z_squared_sum = np.sum(z**2, axis=1, keepdims=True)
+                grad_rms_2 = -delta_z * z * (1.0 / (dim * rms**3 * z_squared_sum + self.layers[i].rmsnorm_eps))
+                
+                delta = grad_rms_1 + grad_rms_2
+                
+                self.layers[i].rmsnorm_scale -= self.learning_rate * grad_scale
+            else:
+                self.gradient_rmsnorm_scale.append(None)
             
             grad_w = (a_prev.T @ delta) / m
             grad_b = np.sum(delta, axis=0, keepdims=True) / m
+            
+            if self.l1_lambda > 0:
+                l1_grad = self.l1_lambda * np.sign(self.layers[i].weights)
+                grad_w += l1_grad
+            
+            if self.l2_lambda > 0:
+                l2_grad = self.l2_lambda * self.layers[i].weights
+                grad_w += l2_grad
 
             self.weights.append(self.layers[i].weights.copy())
             self.biases.append(self.layers[i].biases.copy())
@@ -281,11 +360,11 @@ class FFNN:
         self.biases.reverse()
         self.gradient_weights.reverse()
         self.gradient_biases.reverse()
+        self.gradient_rmsnorm_scale.reverse()
     
     def fit(self, X, y, X_val=None, y_val=None):
         self._initialize_network(X.shape[1])
         
-        # Kalo gaada val data -> trainnya displit 
         if X_val is None or y_val is None:
             X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)
         else:
@@ -302,14 +381,16 @@ class FFNN:
                     X_batch = X[batch_indices]
                     y_batch = y[batch_indices]
                     
-                    zs, activations = self.forward(X_batch)
-                    self.backward(X_batch, y_batch, zs, activations)
+                    zs, activations, normalized_zs = self.forward(X_batch)
+                    self.backward(X_batch, y_batch, zs, activations, normalized_zs)
 
-                y_train_pred = self.forward(X)[1][-1]
-                train_loss = self.loss_func(y, y_train_pred)
+                zs_train, activations_train, _ = self.forward(X)
+                y_train_pred = activations_train[-1]
+                train_loss = self._compute_total_loss(y, y_train_pred)
                 
-                y_val_pred = self.forward(X_val)[1][-1]
-                val_loss = self.loss_func(y_val, y_val_pred)
+                zs_val, activations_val, _ = self.forward(X_val)
+                y_val_pred = activations_val[-1]
+                val_loss = self._compute_total_loss(y_val, y_val_pred)
 
                 self.train_losses.append(train_loss)
                 self.val_losses.append(val_loss)
@@ -327,18 +408,20 @@ class FFNN:
                     X_batch = X[batch_indices]
                     y_batch = y[batch_indices]
                     
-                    zs, activations = self.forward(X_batch)
-                    self.backward(X_batch, y_batch, zs, activations)
+                    zs, activations, normalized_zs = self.forward(X_batch)
+                    self.backward(X_batch, y_batch, zs, activations, normalized_zs)
 
                     epoch_progress.update(len(X_batch))
                 
                 epoch_progress.close()
                 
-                y_train_pred = self.forward(X)[1][-1]
-                train_loss = self.loss_func(y, y_train_pred)
+                zs_train, activations_train, _ = self.forward(X)
+                y_train_pred = activations_train[-1]
+                train_loss = self._compute_total_loss(y, y_train_pred)
                 
-                y_val_pred = self.forward(X_val)[1][-1]
-                val_loss = self.loss_func(y_val, y_val_pred)
+                zs_val, activations_val, _ = self.forward(X_val)
+                y_val_pred = activations_val[-1]
+                val_loss = self._compute_total_loss(y_val, y_val_pred)
 
                 self.train_losses.append(train_loss)
                 self.val_losses.append(val_loss)
@@ -352,13 +435,12 @@ class FFNN:
             )
     
     def predict(self, X):
-        _, activations = self.forward(X)
+        _, activations, _ = self.forward(X)
         if self.loss == 'cce':  
             return np.argmax(activations[-1], axis=1)
         return activations[-1]
     
     def save(self, filename):
-
         model_state = {
             'layers': self.layers,
             'learning_rate': self.learning_rate,
@@ -371,7 +453,10 @@ class FFNN:
             'weights': self.weights,
             'biases': self.biases,
             'gradient_weights': self.gradient_weights,
-            'gradient_biases': self.gradient_biases
+            'gradient_biases': self.gradient_biases,
+            'gradient_rmsnorm_scale': getattr(self, 'gradient_rmsnorm_scale', [None] * len(self.layers)),
+            'l1_lambda': self.l1_lambda,
+            'l2_lambda': self.l2_lambda
         }
         
         with open(filename, 'wb') as f:
@@ -381,7 +466,6 @@ class FFNN:
 
     @classmethod
     def load(cls, filename):
-
         with open(filename, 'rb') as f:
             model_state = pickle.load(f)
         
@@ -390,7 +474,9 @@ class FFNN:
             batch_size=model_state['batch_size'],
             learning_rate=model_state['learning_rate'],
             epochs=model_state['epochs'],
-            verbose=model_state['verbose']
+            verbose=model_state['verbose'],
+            l1_lambda=model_state.get('l1_lambda', 0),  
+            l2_lambda=model_state.get('l2_lambda', 0)  
         )
         
         model.layers = model_state['layers']
