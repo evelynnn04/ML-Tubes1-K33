@@ -130,7 +130,7 @@ class Layer:
             mean = self.init_params['mean']
             variance = self.init_params['variance']
             self.weights = np.random.normal(loc=mean, scale=np.sqrt(variance), size=(input_dim, self.n_neurons))
-            self.biases = np.random.normal(low=lower, high=upper, size=(1, self.n_neurons))
+            self.biases = np.random.normal(loc=mean, scale=np.sqrt(variance), size=(1, self.n_neurons))
         
         elif self.init == 'xavier_uniform':
             limit = np.sqrt(6 / (input_dim + self.n_neurons))
@@ -146,12 +146,13 @@ class Layer:
             std = np.sqrt(2 / input_dim)
             self.weights = np.random.normal(0, std, (input_dim, self.n_neurons))
             self.biases = np.random.normal(0, std, (1, self.n_neurons))
-        
+         
         elif self.init == 'he_uniform':
             limit = np.sqrt(6 / input_dim)
             self.weights = np.random.uniform(-limit, limit, (input_dim, self.n_neurons))
             self.biases = np.random.uniform(-limit, limit, (1, self.n_neurons))
 
+        
         else:
             raise ValueError(
                 f"Unknown initialization type: {self.init}\n"
