@@ -112,56 +112,56 @@ class Layer:
         self.weights = weights
         self.biases = biases
     
-        def initialize(self, input_dim):
-            if 'seed' in self.init_params:
-                np.random.seed(self.init_params['seed'])
+    def initialize(self, input_dim):
+        if 'seed' in self.init_params:
+            np.random.seed(self.init_params['seed'])
 
-            if self.init == 'zero':
-                self.weights = np.zeros((input_dim, self.n_neurons))
-                self.biases = np.zeros((1, self.n_neurons))
-            
-            elif self.init == 'uniform':
-                lower = self.init_params['lower']
-                upper = self.init_params['upper']
-                self.weights = np.random.uniform(low=lower, high=upper, size=(input_dim, self.n_neurons))
-                self.biases = np.random.uniform(low=lower, high=upper, size=(1, self.n_neurons))
-            
-            elif self.init == 'normal':
-                mean = self.init_params['mean']
-                variance = self.init_params['variance']
-                self.weights = np.random.normal(loc=mean, scale=np.sqrt(variance), size=(input_dim, self.n_neurons))
-                self.biases = np.random.normal(low=lower, high=upper, size=(1, self.n_neurons))
-            
-            elif self.init == 'xavier_uniform':
-                limit = np.sqrt(6 / (input_dim + self.n_neurons))
-                self.weights = np.random.uniform(-limit, limit, (input_dim, self.n_neurons))
-                self.biases = np.random.uniform(-limit, limit, size=(1, self.n_neurons))
-            
-            elif self.init == 'xavier_normal':
-                std = np.sqrt(2 / (input_dim + self.n_neurons))
-                self.weights = np.random.normal(0, std, (input_dim, self.n_neurons))
-                self.biases = np.random.normal(0, std, size=(1, self.n_neurons))
-            
-            elif self.init == 'he_normal':
-                std = np.sqrt(2 / input_dim)
-                self.weights = np.random.normal(0, std, (input_dim, self.n_neurons))
-                self.biases = np.random.normal(0, std, (1, self.n_neurons))
-            
-            elif self.init == 'he_uniform':
-                limit = np.sqrt(6 / input_dim)
-                self.weights = np.random.uniform(-limit, limit, (input_dim, self.n_neurons))
-                self.biases = np.random.uniform(-limit, limit, (1, self.n_neurons))
+        if self.init == 'zero':
+            self.weights = np.zeros((input_dim, self.n_neurons))
+            self.biases = np.zeros((1, self.n_neurons))
+        
+        elif self.init == 'uniform':
+            lower = self.init_params['lower']
+            upper = self.init_params['upper']
+            self.weights = np.random.uniform(low=lower, high=upper, size=(input_dim, self.n_neurons))
+            self.biases = np.random.uniform(low=lower, high=upper, size=(1, self.n_neurons))
+        
+        elif self.init == 'normal':
+            mean = self.init_params['mean']
+            variance = self.init_params['variance']
+            self.weights = np.random.normal(loc=mean, scale=np.sqrt(variance), size=(input_dim, self.n_neurons))
+            self.biases = np.random.normal(low=lower, high=upper, size=(1, self.n_neurons))
+        
+        elif self.init == 'xavier_uniform':
+            limit = np.sqrt(6 / (input_dim + self.n_neurons))
+            self.weights = np.random.uniform(-limit, limit, (input_dim, self.n_neurons))
+            self.biases = np.random.uniform(-limit, limit, size=(1, self.n_neurons))
+        
+        elif self.init == 'xavier_normal':
+            std = np.sqrt(2 / (input_dim + self.n_neurons))
+            self.weights = np.random.normal(0, std, (input_dim, self.n_neurons))
+            self.biases = np.random.normal(0, std, size=(1, self.n_neurons))
+        
+        elif self.init == 'he_normal':
+            std = np.sqrt(2 / input_dim)
+            self.weights = np.random.normal(0, std, (input_dim, self.n_neurons))
+            self.biases = np.random.normal(0, std, (1, self.n_neurons))
+        
+        elif self.init == 'he_uniform':
+            limit = np.sqrt(6 / input_dim)
+            self.weights = np.random.uniform(-limit, limit, (input_dim, self.n_neurons))
+            self.biases = np.random.uniform(-limit, limit, (1, self.n_neurons))
 
-            else:
-                raise ValueError(
-                    f"Unknown initialization type: {self.init}\n"
-                    "Available types: zero, uniform, normal, xavier_uniform, xavier_normal, he_normal, he_uniform"
-                )
-            
-            if self.use_rmsnorm:
-                self.rmsnorm_scale = np.ones((1, self.n_neurons))
-            
-            return self
+        else:
+            raise ValueError(
+                f"Unknown initialization type: {self.init}\n"
+                "Available types: zero, uniform, normal, xavier_uniform, xavier_normal, he_normal, he_uniform"
+            )
+        
+        if self.use_rmsnorm:
+            self.rmsnorm_scale = np.ones((1, self.n_neurons))
+        
+        return self
         
     def activate(self, x):
         if self.activation == 'linear':
