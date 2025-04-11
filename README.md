@@ -92,8 +92,15 @@ model_ffnn.fit(X_train, y_train)
 Buka dan jalankan `notebook.ipynb` di Jupyter Notebook
 
 ## Pembagian Tugas
-| NIM | Nama | Peran |
-| --- | --- | --- |
-| 13522013 | Denise Felicia Tiowanni | XXXXX | 
-| 13522083 | Evelyn Yosiana | XXXXX |
-| 13522103 | Steven Tjhia | XXXXX |
+| Kegiatan | Nama (NIM) |
+| --- | --- |
+| Desain struktur kelas (VarValue, Layer, FFNN) | Steven Tjhia (13522103) |
+| Implementasi fungsi forward() di Layer | Steven Tjhia (13522103) |
+| Implementasi fungsi backward() dan update bobot | Denise Felicia Tiowanni (13522013) |
+| Penanganan fungsi aktivasi (ReLU, Sigmoid, Softmax, dll) | Denise Felicia Tiowanni (13522013), Evelyn Yosiana (13522083), Steven Tjhia (13522103) |
+| Pembuatan fungsi loss (MSE, BCE, CCE) | Denise Felicia Tiowanni (13522013), Evelyn Yosiana (13522083), Steven Tjhia (13522103) |
+| Implementasi proses training (fit()) dan prediksi (predict()) | Evelyn Yosiana (13522083) |
+| Visualisasi arsitektur jaringan (visualize()) | Evelyn Yosiana (13522083) |
+| Visualisasi distribusi bobot dan gradien dan grafik loss per epoch | Denise Felicia Tiowanni (13522013) |
+| Regularisasi | Evelyn Yosiana (13522083) |
+| Pembuatan Laporan | Denise Felicia Tiowanni (13522013), Evelyn Yosiana (13522083), Steven Tjhia (13522103) |
