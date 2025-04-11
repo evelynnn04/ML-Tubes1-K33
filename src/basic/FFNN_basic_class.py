@@ -595,7 +595,7 @@ class FFNN:
             weights = self.weights[layer_idx]
             flat_weights = weights.flatten()
             
-            sns.histplot(flat_weights, kde=True, ax=axes[i])
+            sns.histplot(flat_weights, kde=True, bins=10, ax=axes[i])
             
             axes[i].set_title(f'Layer {layer_idx} Weight Distribution')
             axes[i].set_xlabel('Weight Values')
@@ -629,7 +629,7 @@ class FFNN:
             biases = self.biases[layer_idx]
             flat_biases = biases.flatten()
             
-            sns.histplot(flat_biases, kde=True, ax=axes[i])
+            sns.histplot(flat_biases, kde=True, bins=10, ax=axes[i])
             
             axes[i].set_title(f'Layer {layer_idx} Biases')
             axes[i].set_xlabel('Bias Values')
@@ -663,7 +663,7 @@ class FFNN:
             gradient_weights = self.gradient_weights[layer_idx]
             flat_gradient_weights = gradient_weights.flatten()
             
-            sns.histplot(flat_gradient_weights, kde=True, ax=axes[i])
+            sns.histplot(flat_gradient_weights, kde=True, bins=10, ax=axes[i])
             
             axes[i].set_title(f'Layer {layer_idx} Gradient Weight')
             axes[i].set_xlabel('Gradient Weight Values')
@@ -697,7 +697,7 @@ class FFNN:
             gradient_biases = self.gradient_biases[layer_idx]
             flat_gradient_biases = gradient_biases.flatten()
             
-            sns.histplot(flat_gradient_biases, kde=True, ax=axes[i])
+            sns.histplot(flat_gradient_biases, kde=True, bins=10, ax=axes[i])
             
             axes[i].set_title(f'Layer {layer_idx} Gradient Biases')
             axes[i].set_xlabel('Bias Values')
